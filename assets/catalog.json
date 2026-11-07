@@ -1506,7 +1506,8 @@
     "license": "CC0-1.0",
     "sourceUrl": "https://kenney.nl/assets/car-kit",
     "animations": [],
-    "addedAt": "2026-11-07T03:30:00Z"
+    "addedAt": "2026-11-07T03:30:00Z",
+    "thumbnail": "./assets/kenney/thumbs/police-car.webp"
   },
   {
     "id": "builtin-kenney-ambulance-glb",
@@ -1527,7 +1528,8 @@
     "license": "CC0-1.0",
     "sourceUrl": "https://kenney.nl/assets/car-kit",
     "animations": [],
-    "addedAt": "2026-11-07T03:30:00Z"
+    "addedAt": "2026-11-07T03:30:00Z",
+    "thumbnail": "./assets/kenney/thumbs/ambulance.webp"
   },
   {
     "id": "builtin-kenney-suv-glb",
@@ -1548,7 +1550,8 @@
     "license": "CC0-1.0",
     "sourceUrl": "https://kenney.nl/assets/car-kit",
     "animations": [],
-    "addedAt": "2026-11-07T03:30:00Z"
+    "addedAt": "2026-11-07T03:30:00Z",
+    "thumbnail": "./assets/kenney/thumbs/suv.webp"
   },
   {
     "id": "builtin-kenney-character-male-b-glb",
@@ -1569,7 +1572,8 @@
     "license": "CC0-1.0",
     "sourceUrl": "https://kenney.nl/assets/mini-characters",
     "animations": [],
-    "addedAt": "2026-11-07T03:30:00Z"
+    "addedAt": "2026-11-07T03:30:00Z",
+    "thumbnail": "./assets/kenney/thumbs/character-male-b.webp"
   },
   {
     "id": "builtin-kenney-character-female-b-glb",
@@ -1590,7 +1594,8 @@
     "license": "CC0-1.0",
     "sourceUrl": "https://kenney.nl/assets/mini-characters",
     "animations": [],
-    "addedAt": "2026-11-07T03:30:00Z"
+    "addedAt": "2026-11-07T03:30:00Z",
+    "thumbnail": "./assets/kenney/thumbs/character-female-b.webp"
   },
   {
     "id": "builtin-kenney-topdown-soldier-stand-png",
