@@ -1368,12 +1368,13 @@
       "FPS",
       "RTS"
     ],
-    "size": 19045,
+    "size": 50521,
     "url": "./assets/community/modern-tactical-4x4.gltf",
     "author": "WarLike",
     "license": "MIT",
     "animations": [],
-    "addedAt": "2026-11-07T20:00:00Z"
+    "addedAt": "2026-11-07T20:00:00Z",
+    "triangles": 984
   },
   {
     "id": "builtin-community-modern-checkpoint",
@@ -1390,11 +1391,12 @@
       "FPS",
       "RTS"
     ],
-    "size": 10877,
+    "size": 25601,
     "url": "./assets/community/modern-checkpoint.gltf",
     "author": "WarLike",
     "license": "MIT",
     "animations": [],
-    "addedAt": "2026-11-07T20:00:00Z"
+    "addedAt": "2026-11-07T20:00:00Z",
+    "triangles": 464
   }
 ]
