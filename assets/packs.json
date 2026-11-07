@@ -1,0 +1,77 @@
+{
+  "schema": "warlike.library.packs.v1",
+  "description": "Regroupements des fichiers réellement intégrés ; ce manifeste ne déclenche aucune installation automatique dans Engine.",
+  "packs": [
+    {
+      "id": "characters-animated",
+      "name": "Personnages 3D animés",
+      "category": "Personnages",
+      "format": "glb",
+      "status": "art-assets",
+      "assetIds": [
+        "builtin-0",
+        "builtin-1",
+        "builtin-quaternius-ultimatedanimatedcharacter-soldier-male",
+        "builtin-2"
+      ],
+      "notes": "Clips d'animation intégrés aux GLB ; configuration Animator, collisions et gameplay à réaliser dans Engine."
+    },
+    {
+      "id": "characters-static",
+      "name": "Personnages 3D supplémentaires",
+      "category": "Personnages",
+      "format": "glb",
+      "status": "art-assets",
+      "assetIds": [
+        "builtin-kenney-character-male-b-glb",
+        "builtin-kenney-character-female-b-glb"
+      ],
+      "notes": "Aucune animation déclarée dans ce catalogue ; ne pas présenter comme riggé sans inspection du modèle."
+    },
+    {
+      "id": "vehicles-modern",
+      "name": "Véhicules 3D",
+      "category": "Véhicules",
+      "format": "glb",
+      "status": "art-assets",
+      "assetIds": [
+        "builtin-kenney-police-car-glb",
+        "builtin-kenney-ambulance-glb",
+        "builtin-kenney-suv-glb",
+        "builtin-4",
+        "builtin-quaternius-animatedtanks-tank"
+      ],
+      "notes": "Le blindé comporte des animations ; le pack ne fournit pas de contrôleur physique ou de conduite."
+    },
+    {
+      "id": "topdown-sprites",
+      "name": "Sprites 2D Top-down et véhicules",
+      "category": "Sprites 2D",
+      "format": "png",
+      "status": "sprite-assets",
+      "assetIds": [
+        "builtin-kenney-topdown-soldier-stand-png",
+        "builtin-kenney-topdown-soldier-machine-png",
+        "builtin-kenney-pixel-police-png",
+        "builtin-kenney-pixel-buggy-png"
+      ],
+      "notes": "Sprites PNG individuels, pas de spritesheet d'animation complet."
+    },
+    {
+      "id": "platformer-sprites",
+      "name": "Sprites 2D Plateforme",
+      "category": "Sprites 2D",
+      "format": "png",
+      "status": "sprite-assets",
+      "assetIds": [
+        "builtin-6",
+        "builtin-7",
+        "builtin-8",
+        "builtin-9",
+        "builtin-10",
+        "builtin-11"
+      ],
+      "notes": "Éléments individuels utilisables dans des scènes 2D ; tileset et paramètres d'import non préconfigurés."
+    }
+  ]
+}
