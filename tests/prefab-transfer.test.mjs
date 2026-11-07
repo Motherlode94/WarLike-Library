@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {Script} from 'node:vm';
 import {createPrefab,readPrefabs,savePrefab,resolvePrefab,exportPrefabPackage} from '../js/prefab-studio.js';
 import {inspectImportedBytes} from '../js/import-validation.js';
 const catalog=JSON.parse(readFileSync(new URL('../assets/catalog.json',import.meta.url),'utf8'));
@@ -38,4 +39,15 @@ test('import validates real bundled GLB and PNG and refuses disguised images',()
 test('standalone Prefab Studio has source selection and export controls',()=>{
  const html=readFileSync(new URL('../prefab-studio.html',import.meta.url),'utf8');
  for(const id of ['source','parent','existing','components','download'])assert.ok(html.includes('id="'+id+'"'));
+});
+
+test('Prefab Studio and Store inline scripts parse after UI updates',()=>{
+ for(const path of ['prefab-studio.html','store.html']){
+  const html=readFileSync(new URL('../'+path,import.meta.url),'utf8');
+  const sources=[...html.matchAll(/<script type="module">([\s\S]*?)<\/script>/g)].map(m=>m[1]);
+  assert.equal(sources.length,1,'one inline module in '+path);
+  // Wrap to allow top-level await; parsing catches accidental syntax regressions.
+  const source=sources[0].replace(/^import\s+[^;]+;\s*$/gm,'');
+  new Script('(async()=>{'+source+'})()',{filename:path});
+ }
 });
