@@ -1,6 +1,12 @@
 export const kinds={all:'Tout',model:'Modèles 3D',image:'Images & sprites',animation:'Animations',audio:'Audio',video:'Vidéo',script:'Scripts',document:'Documents'};
 export const languages={wls:'WarScript',js:'JavaScript',ts:'TypeScript',cs:'C#'};
 export const MAX_FILE=32*1024*1024;
+// Saved metadata may customize a built-in item, but cannot replace its current file.
+// In particular, a restored backup must not bring back a removed catalog asset.
+export function mergeLibrary(catalog,saved){
+ const byId=new Map(saved.map(a=>[a.id,a])),editable=['name','collection','tags','description','license','favorite','deleted'];
+ return [...catalog.map(a=>{const prior=byId.get(a.id);return prior?{...a,...Object.fromEntries(editable.filter(k=>Object.hasOwn(prior,k)).map(k=>[k,prior[k]]))}:a}),...[...byId.values()].filter(a=>!a.id.startsWith('builtin-'))];
+}
 export const extension=name=>name.split('.').at(-1).toLowerCase();
 export function classify(name){const ext=extension(name);for(const [kind,extensions] of Object.entries({model:['glb'],image:['png','jpg','jpeg','webp','gif'],audio:['wav','mp3','ogg','flac','m4a'],video:['mp4','webm','mov'],script:['wls','js','ts','cs','py','cpp','h','css','html'],document:['json','pdf','txt','md','zip']}))if(extensions.includes(ext))return kind;throw Error('Format non pris en charge : '+ext);}
 export function formatBytes(bytes){return bytes>=1024*1024?(bytes/1024/1024).toFixed(1)+' Mo':bytes>=1024?Math.round(bytes/1024)+' Ko':bytes+' o';}
