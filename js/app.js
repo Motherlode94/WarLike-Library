@@ -49,40 +49,4 @@ let dragDepth=0;document.addEventListener('dragenter',e=>{if([...e.dataTransfer.
 try{const response=await fetch('./assets/catalog.json');if(!response.ok)throw Error('Catalogue indisponible.');catalog=await response.json();records=catalog;await openStore();const saved=await readAll();records=mergeLibrary(catalog,saved);dbReady=true;}catch(e){toast(e.message+' · Recharge la page pour réessayer.',true)}
 $('utilityFilter').onchange=e=>{utility=e.target.value;selected=null;render();};
 $('authorFilter').onchange=e=>{author=e.target.value;selected=null;render();};
-// Secure, user-initiated transfer of real binary assets from Engine's Asset Store.
-// Different domains have separate IndexedDB; transfer bytes, not a reference URL.
-const storeTransferChannel=new URLSearchParams(location.search).get('storeTransfer');
-const ENGINE_STORE_ORIGIN='https://warlike-engine.pages.dev';
-if(storeTransferChannel&&/^[a-f0-9]{40}$/.test(storeTransferChannel)&&window.opener){
- const announce=msg=>window.opener?.postMessage({...msg,channel:storeTransferChannel},ENGINE_STORE_ORIGIN);
- let incomingBusy=false;
- window.addEventListener('message',async event=>{
-  if(event.origin!==ENGINE_STORE_ORIGIN||event.source!==window.opener||event.data?.channel!==storeTransferChannel)return;
-  if(event.data.type==='warlike-store-ping-v1'){announce({type:'warlike-library-ready-v1'});return;}
-  if(event.data.type!=='warlike-store-asset-v1'||incomingBusy)return;
-  incomingBusy=true;
-  try{
-   if(!dbReady)throw Error('Stockage Library indisponible.');
-   const {asset,bytes}=event.data;
-   if(!asset||typeof asset.filename!=='string'||!/^[A-Za-z0-9_. -]{1,180}\.(?:glb|png|jpg|jpeg|webp|gif|wav|ogg|mp3|js|ts|cs|wls)$/i.test(asset.filename))throw Error('Nom ou format de fichier invalide.');
-   if(!(bytes instanceof ArrayBuffer)||bytes.byteLength<1||bytes.byteLength>MAX_FILE)throw Error('Fichier binaire invalide (32 Mo maximum).');
-   if(typeof asset.sha256!=='string'||!/^[a-f0-9]{64}$/i.test(asset.sha256))throw Error('Empreinte SHA-256 manquante.');
-   const actual=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),x=>x.toString(16).padStart(2,'0')).join('');
-   if(actual!==asset.sha256.toLowerCase())throw Error('Empreinte SHA-256 différente : transfert refusé.');
-   const summary=inspectImportedBytes(asset.filename,bytes);
-   if(records.some(x=>!x.deleted&&x.sha256===actual)){toast('Asset déjà présent dans Library : '+asset.filename);announce({type:'warlike-library-result-v1',ok:true,duplicate:true});return;}
-   const file=new File([bytes],asset.filename,{type:summary.kind==='model'?'model/gltf-binary':summary.kind==='image'?'image/png':'application/octet-stream'});
-   const allowedCollections=['Personnages','Véhicules','Bâtiments','Nature','Armes','Animations','Sprites 2D','Environnements','Audio','Code & logique'];
-   const collection=allowedCollections.includes(asset.collection)?asset.collection:'Mes imports';
-   const author=typeof asset.author==='string'?asset.author.slice(0,100):'Origine externe';
-   const license=typeof asset.license==='string'?asset.license.slice(0,100):'Non précisée';
-   const sourceUrl=typeof asset.sourceUrl==='string'&&/^https:\/\//.test(asset.sourceUrl)?asset.sourceUrl.slice(0,1000):undefined;
-   await persist({id:'import-'+crypto.randomUUID(),name:typeof asset.name==='string'?asset.name.slice(0,160):asset.filename.replace(/\.[^.]+$/,''),filename:asset.filename,kind:summary.kind,collection,tags:['Asset Store','Transfert direct'],size:file.size,blob:file,sha256:actual,author,license,sourceUrl,addedAt:new Date().toISOString(),...summary});
-   utility='all';author='all';kind='all';view='imports';$('search').value='';selected=null;render();
-   toast('✓ '+asset.filename+' importé dans WarLike Library.');announce({type:'warlike-library-result-v1',ok:true,duplicate:false});
-  }catch(error){toast('Transfert refusé : '+error.message,true);announce({type:'warlike-library-result-v1',ok:false,error:error.message});}
-  finally{incomingBusy=false;}
- });
- announce({type:'warlike-library-ready-v1'});
-}
 render();
