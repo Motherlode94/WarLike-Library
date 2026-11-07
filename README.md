@@ -4,7 +4,7 @@ Bibliothèque créative indépendante de l’écosystème WarLike. Interface en 
 
 ## Fonctions disponibles
 
-- 23 ressources intégrées : 9 modèles GLB réels Kenney/Quaternius, 6 sprites PNG, 2 sons OGG et 6 scripts WarLike. Les fichiers sont fournis avec l’application, pas seulement liés à un catalogue externe.
+- **469 ressources intégrées** : **189 modèles 3D**, **272 images 2D**, 6 scripts et 2 sons. Parmi elles, **386 véritables fichiers Kenney CC0 supplémentaires** ont été importés en novembre 2026 : 154 GLB avec leurs vignettes WebP, et 232 PNG. Les fichiers sont fournis dans le dépôt et dans le site publié, pas seulement référencés comme liens externes. Les ressources WarLike procédurales sont toujours distinguées des modèles d'origine.
 - Recherche par nom, collection et tags ; filtres par type et modèles animés ; tri, vues grille/liste, favoris, collections et corbeille récupérable.
 - Import multiple et glisser-déposer : GLB embarqués, PNG/JPEG/WebP/GIF, audio, vidéo, scripts et documents. Limite 32 Mo/fichier ; doublons SHA-256 évités.
 - Aperçus images, audio/vidéo, texte et modèles 3D. Le lecteur 3D Google model-viewer 4.1.0 est chargé uniquement à l’ouverture d’un GLB ; il nécessite Internet et WebGL. Les vignettes et téléchargements restent disponibles sans WebGL.
@@ -124,3 +124,13 @@ Pour les **modèles GLB 3D**, **Exporter pour Engine** télécharge désormais u
 Les imports dans la bibliothèque principale contrôlent désormais davantage de signatures de fichiers (PNG/JPEG/WebP/GIF/SVG et GLB/glTF) ; un glTF à textures ou buffers externes est refusé plutôt qu'enregistré avec des dépendances manquantes.
 
 **Limites actuelles :** seul le transfert GLB 3D est implémenté de bout en bout au niveau stockage local ; le transfert des PNG 2D, les glTF multi-fichiers, l'import automatique sans téléchargement, et le packaging des fichiers 3D importés dans les exports de jeux restent incomplets. Aucun compte cloud ou stockage distant utilisateur n'est opérationnel : un schéma D1 et une architecture de sécurité sont préparés sous `cloud/`, sans service de connexion déployé. Les tests automatiques ne remplacent pas un test Scene → Play → Export dans le navigateur.
+
+## Import massif de véritables assets 2D et 3D Kenney (novembre 2026)
+
+Le répertoire `assets/kenney-expanded/` contient **154 modèles 3D GLB**, **232 sprites PNG** et **154 vignettes WebP** provenant de packs Kenney sous licence CC0-1.0. Les ressources couvrent notamment : Mini Characters, Blocky Characters, Car Kit, City Kit, Castle Kit, Nature Kit, Furniture Kit, Space Kit, Graveyard Kit, Blaster Kit, Tower Defense, Topdown Shooter, RTS Medieval, RTS Sci-fi, Racing Pack, New Platformer Pack et Toon Characters.
+
+Ces fichiers ont été importés **en octets originaux depuis des commits épinglés** des dépôts [Hidencod/tge-assets](https://github.com/Hidencod/tge-assets) (3D) et [shorepine/kenney](https://github.com/shorepine/kenney) (2D). Chaque entrée documente son origine, sa révision, sa licence, sa taille et son SHA-256. Le fichier `assets/import-queue.json` répertorie la sélection exacte ; le script `scripts/import-kenney-packs.mjs` télécharge et vérifie les fichiers depuis les sources publiques, puis génère les fiches. L'action GitHub `import-real-assets.yml` exécute l'import et ses tests avant le commit. Cette opération n'invente aucun modèle : tous les GLB et PNG sont effectivement intégrés au dépôt.
+
+**À noter :** Kenney propose principalement des assets stylisés ou low-poly. Un GLB authentique n'est pas automatiquement un personnage riggé, un véhicule conduisible, ni un prefab jouable. Les sprites PNG sont des images individuelles, pas forcément des animations intégrales. Les fichiers et vignettes sont authentiques, mais le rendu AAA, le rigging, la physique et l'intégration Gameplay doivent être évalués séparément.
+
+Avec le nouveau volume, l'Asset Store charge 48 fiches à la fois, puis permet d'en afficher davantage sans saturer immédiatement la page. Le catalogue est organisé en 31 regroupements de packs (dont les 5 regroupements historiques).
