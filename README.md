@@ -1,3 +1,9 @@
+## Nouveau — Transfert 2D/3D et lots multi-assets (novembre 2026)
+
+Le **Pack Builder** (`pack-builder.html`) permet de sélectionner jusqu'à **16 ressources** pour un lot de **32 Mo maximum** : modèles GLB, sprites PNG et sources de scripts `.wls`, `.js`, `.ts`, `.cs`. Le bundle `warlike.library.bundle.v2` inclut les octets et les empreintes SHA-256 de chaque fichier, avec les prefabs existants de Prefab Studio lorsqu'ils sont disponibles. Le lot peut être téléchargé en JSON ou transmis directement à la fenêtre Engine via des messages inter-origines contrôlés.
+
+Prefab Studio transfère également les PNG individuels. Limite d'un sprite PNG installable : **256 Ko** et dimensions maximum **4096×4096**. Les scripts inclus dans les bundles sont archivés côté Engine puis importables explicitement dans Script Studio ; ils ne sont pas exécutés automatiquement. Les dépendances non embarquées et les références de scripts restent à relier dans le projet, et les modifications d'un prefab dans une scène existante ne sont pas migrées automatiquement.
+
 # WarLike Library
 
 Bibliothèque créative indépendante de l’écosystème WarLike. Interface en français, adaptée au bureau et au mobile. HTML/CSS/JavaScript natifs ; aucune installation nécessaire côté utilisateur.
