@@ -1398,5 +1398,93 @@
     "animations": [],
     "addedAt": "2026-11-07T20:00:00Z",
     "triangles": 464
+  },
+  {
+    "id": "builtin-community-vehicle-scout-buggy",
+    "name": "Buggy de reconnaissance 3D",
+    "filename": "vehicle-scout-buggy.gltf",
+    "kind": "model",
+    "collection": "Véhicules",
+    "description": "Buggy tactique low-poly : quatre roues, châssis, cabine ouverte, pare-brise et feux. Sans conduite préconfigurée.",
+    "tags": [
+      "WarLike Original",
+      "3D",
+      "Low-poly",
+      "Véhicules",
+      "Guerre moderne"
+    ],
+    "size": 37576,
+    "url": "./assets/community/vehicle-scout-buggy.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "animations": [],
+    "triangles": 704,
+    "addedAt": "2026-11-07T21:00:00Z"
+  },
+  {
+    "id": "builtin-community-vehicle-armored-carrier",
+    "name": "Transport blindé 8×8 3D",
+    "filename": "vehicle-armored-carrier.gltf",
+    "kind": "model",
+    "collection": "Véhicules",
+    "description": "Transport de troupes low-poly : huit roues, coque blindée, tourelle et trappe arrière. Sans navigation ni dégâts prédéfinis.",
+    "tags": [
+      "WarLike Original",
+      "3D",
+      "Low-poly",
+      "Véhicules",
+      "Guerre moderne"
+    ],
+    "size": 62919,
+    "url": "./assets/community/vehicle-armored-carrier.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "animations": [],
+    "triangles": 1232,
+    "addedAt": "2026-11-07T21:00:00Z"
+  },
+  {
+    "id": "builtin-community-character-scout",
+    "name": "Éclaireur tactique 3D",
+    "filename": "character-scout.gltf",
+    "kind": "model",
+    "collection": "Personnages",
+    "description": "Personnage humain low-poly : casque, tenue, gilet tactique, mains, bottes et visière. Maillage statique sans rig.",
+    "tags": [
+      "WarLike Original",
+      "3D",
+      "Low-poly",
+      "Personnages",
+      "Guerre moderne"
+    ],
+    "size": 53723,
+    "url": "./assets/community/character-scout.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "animations": [],
+    "triangles": 1048,
+    "addedAt": "2026-11-07T21:00:00Z"
+  },
+  {
+    "id": "builtin-community-character-field-medic",
+    "name": "Médecin de terrain 3D",
+    "filename": "character-field-medic.gltf",
+    "kind": "model",
+    "collection": "Personnages",
+    "description": "Personnage humain low-poly : tenue médicale, brassard et sac de secours. Maillage statique sans rig.",
+    "tags": [
+      "WarLike Original",
+      "3D",
+      "Low-poly",
+      "Personnages",
+      "Guerre moderne"
+    ],
+    "size": 53181,
+    "url": "./assets/community/character-field-medic.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "animations": [],
+    "triangles": 1048,
+    "addedAt": "2026-11-07T21:00:00Z"
   }
 ]
