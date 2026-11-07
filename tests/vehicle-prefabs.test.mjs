@@ -37,7 +37,7 @@ test('vehicle prefabs validate wheel names, physics and script references',()=>{
  savePrefab(variant,storage);
  assert.equal(resolvePrefab('car-sport',readPrefabs(storage)).components.vehicle.parts.wheelFL,'Wheel_FL');
 });
-test('Prefab Studio exposes real GLB inspection and vehicle controls',()=>{
+test('Prefab Studio exposes real GLB inspection and vehicle controls',async()=>{
  const {readFileSync}=await import('node:fs');
  const html=readFileSync(new URL('../prefab-studio.html',import.meta.url),'utf8');
  for(const phrase of ['inspectSelectedVehicle','vehiclePartNames','component-vehicle','checkVehicleBindings','vehicleSpeed'])assert.ok(html.includes(phrase));
