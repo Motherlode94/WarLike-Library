@@ -1,0 +1,4 @@
+let db;
+export function openStore(){return new Promise((resolve,reject)=>{const req=indexedDB.open('warlike-library',1);req.onupgradeneeded=()=>req.result.createObjectStore('resources',{keyPath:'id'});req.onsuccess=()=>{db=req.result;resolve()};req.onerror=()=>reject(req.error);req.onblocked=()=>reject(Error('Ferme les autres onglets Library puis recharge.'));});}
+export function readAll(){return new Promise((resolve,reject)=>{const tx=db.transaction('resources','readonly'),req=tx.objectStore('resources').getAll();req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
+export function writeMany(records){return new Promise((resolve,reject)=>{const tx=db.transaction('resources','readwrite');tx.oncomplete=()=>resolve();tx.onabort=()=>reject(tx.error||Error('Stockage interrompu.'));tx.onerror=()=>{};try{for(const record of records)tx.objectStore('resources').put(record);}catch(error){tx.abort();reject(error)}});}

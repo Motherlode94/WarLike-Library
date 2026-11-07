@@ -1,3 +1,43 @@
 # WarLike Library
 
-Bibliothèque de ressources créatives pour l’écosystème WarLike : modèles 3D, images, animations, audio, vidéos et scripts.
+Bibliothèque créative indépendante de l’écosystème WarLike. Interface en français, adaptée au bureau et au mobile. HTML/CSS/JavaScript natifs ; aucune installation nécessaire côté utilisateur.
+
+## Fonctions disponibles
+
+- 22 ressources intégrées : 8 modèles GLB réels Kenney/Quaternius, 6 sprites PNG, 2 sons OGG et 6 scripts WarLike. Les fichiers sont fournis avec l’application, pas seulement liés à un catalogue externe.
+- Recherche par nom, collection et tags ; filtres par type et modèles animés ; tri, vues grille/liste, favoris, collections et corbeille récupérable.
+- Import multiple et glisser-déposer : GLB embarqués, PNG/JPEG/WebP/GIF, audio, vidéo, scripts et documents. Limite 32 Mo/fichier ; doublons SHA-256 évités.
+- Aperçus images, audio/vidéo, texte et modèles 3D. Le lecteur 3D Google model-viewer 4.1.0 est chargé uniquement à l’ouverture d’un GLB ; il nécessite Internet et WebGL. Les vignettes et téléchargements restent disponibles sans WebGL.
+- Création de scripts WarScript (.wls), JavaScript (.js), TypeScript (.ts) et C# (.cs) avec modèles de départ. Éditeur avec numéros de lignes, indentation Tab, position du curseur, Ctrl/Cmd+S, protection des changements non enregistrés et téléchargement. Modifier un exemple intégré crée une copie personnelle.
+- Données et fichiers conservés dans IndexedDB dans ce navigateur. Les scripts et fichiers ne sont pas envoyés à un serveur. Sauvegarde JSON incluant les fichiers personnels, restauration validée puis écrite en une transaction. Les ressources intégrées sont référencées dans la sauvegarde et fournies par cette version de l’application.
+
+## Guerre moderne
+
+Une collection comprend un soldat stylisé, un blindé animé et quatre comportements de jeu :
+
+| Script | Fonctionnement et branchements |
+| --- | --- |
+| SoldatDeplacement.wls | ZQSD, sprint Maj, collisions par Move. Désactiver un autre contrôleur de déplacement concurrent. |
+| ChargeurFusil.wls | F pour tir automatique, R pour recharge de 2 s, chargeur 30 et réserve 90. Déclenche les triggers Animator shootRequest/reloadRequest et le signal weapon:shot. Relier ce signal aux dégâts/projectiles dans Blueprint : ce script ne calcule pas de trajectoire ou de dégâts. |
+| Patrouille.js | Aller-retour sur X, vitesse/distance configurables, déplacement via l’API de collisions du moteur. |
+| CaptureObjectif.js | Capture par équipe, pause si contestation, exclusion des acteurs morts, signal objectif:captured. Relier ce signal au score/HUD. |
+
+Télécharger le script puis l’importer dans Script Studio de WarLike Engine. Library édite du code ; elle n’exécute ni ne compile C#/TypeScript dans son propre onglet. Le TypeScript demande compilation dans Engine ; C# s’exécute via le pont .NET local. Aucun transfert silencieux entre les applications n’est implémenté.
+
+## Développement
+
+```sh
+npm run check
+npm test
+python3 -m http.server 8000
+```
+
+Ouvrir http://localhost:8000. Déploiement statique : dossier racine du dépôt, sans commande de compilation. Le workflow GitHub vérifie la syntaxe, les fichiers réels, les filtres, la sauvegarde et les comportements militaires JS.
+
+## Données et limites
+
+IndexedDB est propre à l’origine et au profil du navigateur : exporter une sauvegarde avant d’effacer les données du navigateur ou de changer d’appareil. Pas de synchronisation cloud, de compte utilisateur ni d’exécution du code fourni. Les documents PDF/ZIP sont téléchargeables ; leur rendu interne n’est pas implémenté. Les GLB avec fichiers externes sont refusés : intégrer les textures/buffers dans le GLB.
+
+## Licences
+
+Code de l’application et scripts WarLike : MIT (voir LICENSE). Assets Kenney/Quaternius : CC0-1.0 ; auteurs et sources exactes dans assets/catalog.json. Notices conservées dans assets/KENNEY-LICENSE.md et assets/QUATERNIUS-LICENSE.md. Google model-viewer est un composant tiers Apache-2.0 chargé depuis https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js.
