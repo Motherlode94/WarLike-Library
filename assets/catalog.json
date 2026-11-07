@@ -776,5 +776,257 @@
     "author": "WarLike",
     "license": "MIT",
     "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-barrel",
+    "name": "Fût industriel",
+    "filename": "warlike-barrel.svg",
+    "kind": "image",
+    "collection": "Objets",
+    "description": "Fût métallique rouge pour décor urbain",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Objets"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-barrel.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-crate",
+    "name": "Caisse de ravitaillement",
+    "filename": "warlike-crate.svg",
+    "kind": "image",
+    "collection": "Objets",
+    "description": "Caisse renforcée et marquage logistique",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Objets"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-crate.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-sword",
+    "name": "Épée d’acier",
+    "filename": "warlike-sword.svg",
+    "kind": "image",
+    "collection": "Armes",
+    "description": "Arme blanche 2D pour RPG",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Armes"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-sword.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-potion",
+    "name": "Potion de mana",
+    "filename": "warlike-potion.svg",
+    "kind": "image",
+    "collection": "Objets",
+    "description": "Fiole de potion bleue",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Objets"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-potion.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-coin",
+    "name": "Pièces d’or",
+    "filename": "warlike-coin.svg",
+    "kind": "image",
+    "collection": "Objets",
+    "description": "Butin et monnaie 2D",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Objets"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-coin.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-road",
+    "name": "Tuile de route",
+    "filename": "warlike-road.svg",
+    "kind": "image",
+    "collection": "Terrain",
+    "description": "Tuile de chaussée pour carte 2D",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Terrain"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-road.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-bush",
+    "name": "Buisson 2D",
+    "filename": "warlike-bush.svg",
+    "kind": "image",
+    "collection": "Nature",
+    "description": "Arbuste stylisé pour jeux de plateforme",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Nature"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-bush.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-shield",
+    "name": "Bouclier de garde",
+    "filename": "warlike-shield.svg",
+    "kind": "image",
+    "collection": "Armes",
+    "description": "Bouclier 2D en métal et bois",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Armes"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-shield.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-healthbar",
+    "name": "Barre de vie HUD",
+    "filename": "warlike-healthbar.svg",
+    "kind": "image",
+    "collection": "Interfaces",
+    "description": "Composant HUD vie et armure",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Interfaces"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-healthbar.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-fantasy-portal",
+    "name": "Portail magique",
+    "filename": "warlike-fantasy-portal.svg",
+    "kind": "image",
+    "collection": "Effets",
+    "description": "Portail circulaire 2D d’énergie bleue",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Effets"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-fantasy-portal.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-crate-3d",
+    "name": "Caisse de transport 3D",
+    "filename": "warlike-crate-3d.gltf",
+    "kind": "model",
+    "collection": "Objets",
+    "description": "Caisse logistique en bois cerclée",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Objets"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-crate-3d.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-bench-3d",
+    "name": "Banc urbain 3D",
+    "filename": "warlike-bench-3d.gltf",
+    "kind": "model",
+    "collection": "Objets",
+    "description": "Banc public avec assise, dossier et quatre pieds",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Objets"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-bench-3d.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-shelter-3d",
+    "name": "Abri de terrain 3D",
+    "filename": "warlike-shelter-3d.gltf",
+    "kind": "model",
+    "collection": "Bâtiments",
+    "description": "Petit abri modulaire avec toit et piliers",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Bâtiments"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-shelter-3d.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-server-rack-3d",
+    "name": "Baie serveur 3D",
+    "filename": "warlike-server-rack-3d.gltf",
+    "kind": "model",
+    "collection": "Science-fiction",
+    "description": "Rack informatique industriel avec panneaux lumineux",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Science-fiction"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-server-rack-3d.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:30:00Z"
   }
 ]
