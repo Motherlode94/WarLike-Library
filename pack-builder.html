@@ -1,0 +1,61 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WarLike Library — Bundle Builder</title><style>:root{font:15px/1.55 system-ui;color-scheme:dark;background:#10171b;color:#ebf5f4}body{margin:0}main{max-width:960px;margin:32px auto;padding:22px}a{color:#ace7cf}h1{font-size:clamp(26px,5vw,40px)}.panel{padding:20px;border-radius:12px;border:1px solid #3b5d59;background:#1c2a2d}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}button,input{font:inherit;color:inherit}button,input[type=search]{background:#1e3634;border:1px solid #6b9186;padding:10px 14px;border-radius:8px}button{cursor:pointer}button:disabled{opacity:.5}#list{max-height:450px;overflow:auto;display:grid;gap:6px}.item{display:flex;gap:12px;align-items:center;padding:9px 12px;background:#142123;border-radius:7px}.item span{flex:1}small{color:#bdcecc}#status{white-space:pre-wrap;min-height:32px}.warning{border-left:3px solid #e9bf7f;padding:10px;background:#302b22}</style></head><body><main><nav><a href="./">← Library</a> · <a href="./prefab-studio.html">Prefab Studio</a> · <a href="https://warlike-engine.pages.dev/asset-store/library-bundle.html" target="_blank" rel="noopener">Importeur Engine</a></nav><h1>Pack Builder · Library → Engine</h1><p>Sélectionne des sprites PNG, modèles GLB et scripts pour créer un lot versionné. Les prefabs enregistrés dans Prefab Studio sont repris lorsque disponibles. Chaque ressource est incluse avec son empreinte SHA-256 ; 16 ressources et 32 Mo maximum par lot.</p><section class="panel"><label for="search">Filtrer les ressources</label><input type="search" id="search" placeholder="Nom, type, collection…"><p id="count">Chargement du catalogue…</p><div id="list"></div><div class="actions"><button id="download" disabled>Exporter le bundle JSON</button><button id="direct" disabled>Installer le lot dans Engine ↗</button></div><p id="status" role="status"></p></section><p class="warning">Les scripts sont transportés comme fichiers source et ne sont jamais exécutés automatiquement. Les fichiers GLB doivent intégrer les textures/buffers ; les PNG dépassant 256 Ko ne sont pas installables en prefab via ce parcours. L'outil ne récupère pas automatiquement les dépendances déclarées dans les scripts.</p><script type="module">
+import {createPrefab,readPrefabs,exportPrefabPackage} from './js/prefab-studio.js';
+const $=id=>document.getElementById(id),status=message=>$('status').textContent=message;
+let catalog=[],selected=new Set(),busy=false;
+const MAX=32*1024*1024;
+const filename=a=>String(a.filename||a.url?.split('/').at(-1)||'').split('?')[0];
+const kind=a=>{const ext=filename(a).split('.').at(-1)?.toLowerCase();if(a.kind==='model'&&ext==='glb')return'model';if(a.kind==='image'&&ext==='png')return'image';if(a.kind==='script'&&['js','ts','cs','wls'].includes(ext))return'script';return null;};
+function draw(){
+ const q=$('search').value.toLowerCase().trim(),list=$('list');list.replaceChildren();
+ const shown=catalog.filter(a=>!q||(a.name+' '+a.collection+' '+a.kind).toLowerCase().includes(q)).slice(0,400);
+ for(const asset of shown){const row=document.createElement('label');row.className='item',check=document.createElement('input');check.type='checkbox';check.checked=selected.has(asset.id);check.onchange=()=>{if(check.checked){if(selected.size>=16){check.checked=false;return status('16 ressources maximum.');}selected.add(asset.id);}else selected.delete(asset.id);sync();};const name=document.createElement('span');name.textContent=asset.name;const meta=document.createElement('small');meta.textContent=kind(asset).toUpperCase()+' · '+filename(asset);row.append(check,name,meta);list.append(row);}
+ sync();
+}
+function sync(){const can=selected.size>0&&!busy;$('download').disabled=!can;$('direct').disabled=!can;$('count').textContent=selected.size+' ressource(s) sélectionnée(s) · '+catalog.length+' disponibles';}
+function base64(bytes){let out='';for(let i=0;i<bytes.length;i+=32768)out+=String.fromCharCode(...bytes.subarray(i,i+32768));return btoa(out);}
+async function digest(bytes){const hash=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));return Array.from(hash,b=>b.toString(16).padStart(2,'0')).join('');}
+async function buildPack(){
+ const items=[],scripts=[],sources=catalog.filter(a=>selected.has(a.id)),saved=readPrefabs();
+ if(!sources.length||sources.length>16)throw Error('Sélection invalide.');
+ let total=0;
+ for(const asset of sources){
+  const file=filename(asset),k=kind(asset);
+  if(!/^[a-zA-Z0-9_.-]{1,160}$/.test(asset.id)||!/^[a-zA-Z0-9_.-]{1,180}$/.test(file)||!asset.url?.startsWith('./assets/')||asset.url.includes('..'))throw Error('Chemin ou nom non autorisé : '+asset.name);
+  const res=await fetch(asset.url,{credentials:'same-origin'});if(!res.ok)throw Error('Fichier manquant : '+file);
+  const bytes=new Uint8Array(await res.arrayBuffer());
+  if(bytes.length<1||bytes.length>25*1024*1024)throw Error('Fichier vide ou trop volumineux : '+file);
+  total+=bytes.length;if(total>MAX)throw Error('Lot supérieur à 32 Mo.');
+  const binary={encoding:'base64',byteLength:bytes.length,sha256:await digest(bytes),data:base64(bytes)};
+  if(k==='script'){if(bytes.length>256*1024)throw Error('Script supérieur à 256 Ko.');scripts.push({id:asset.id,filename:file,license:asset.license||'Non précisée',binary});}
+  else{
+   const source=saved.find(p=>p.assetId===asset.id);
+   const prefab=source||createPrefab(asset,{id:'prefab-'+asset.id,name:asset.name});
+   const item=exportPrefabPackage(prefab.id,source?saved:[...saved,prefab],asset);
+   item.binary={...binary,mime:k==='image'?'image/png':'model/gltf-binary'};
+   items.push(item);
+  }
+ }
+ return {schema:'warlike.library.bundle.v2',version:2,items,scripts};
+}
+function save(data){const url=URL.createObjectURL(new Blob([JSON.stringify(data)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='warlike-library-bundle-v2.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),60000);}
+$('download').onclick=async()=>{busy=true;sync();try{status('Préparation et empreintes SHA-256…');const pack=await buildPack();save(pack);status('Lot exporté : '+pack.items.length+' prefabs et '+pack.scripts.length+' scripts.');}catch(e){status('Échec : '+e.message);}finally{busy=false;sync();}};
+$('direct').onclick=async()=>{
+ const channel=Array.from(crypto.getRandomValues(new Uint8Array(20)),b=>b.toString(16).padStart(2,'0')).join(''),origin='https://warlike-engine.pages.dev';
+ const target=window.open(origin+'/asset-store/library-bundle.html?bundleTransfer='+channel,'_blank');
+ if(!target)return status('Fenêtre Engine bloquée : utilise Exporter le bundle.');
+ busy=true;sync();
+ let done=false,payload=null,ready=false;
+ const cleanup=()=>{done=true;busy=false;sync();window.removeEventListener('message',onMessage);};
+ const send=()=>{if(ready&&payload&&!done)target.postMessage({type:'warlike-bundle-transfer-v2',channel,pack:payload},origin);};
+ const onMessage=e=>{
+  if(done||e.origin!==origin||e.source!==target||e.data?.channel!==channel)return;
+  if(e.data.type==='warlike-engine-bundle-ready-v2'){ready=true;send();}
+  if(e.data.type==='warlike-engine-bundle-installed-v2'){status(e.data.ok?'Lot installé dans Engine. Recharge le moteur pour utiliser les prefabs.':'Engine a refusé : '+e.data.error);cleanup();}
+ };
+ window.addEventListener('message',onMessage);
+ try{status('Préparation du lot pour transfert direct…');payload=await buildPack();if(target.closed)throw Error('Fenêtre Engine fermée.');target.postMessage({type:'warlike-bundle-ping-v2',channel},origin);send();}
+ catch(error){status('Transfert impossible : '+error.message);cleanup();}
+};
+try{const res=await fetch('./assets/catalog.json');if(!res.ok)throw Error('Catalogue indisponible.');const data=await res.json();catalog=data.filter(a=>kind(a)&&a.url?.startsWith('./assets/'));draw();}catch(e){status(e.message);}
+$('search').addEventListener('input',draw);
+</script></main></body></html>
