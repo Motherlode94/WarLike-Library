@@ -1,0 +1,44 @@
+name: Import verified Kenney 2D and 3D packs
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/import-queue.json'
+      - 'scripts/import-kenney-packs.mjs'
+      - '.github/workflows/import-real-assets.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: import-library-assets
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Download original CC0 assets, validate bytes and update catalog
+        run: node scripts/import-kenney-packs.mjs
+      - name: Validate Library with the expanded binary catalog
+        run: |
+          npm test
+          npm run check
+      - name: Commit real assets and updated manifests
+        run: |
+          git config user.name 'WarLike Library importer'
+          git config user.email 'warlike-library-import@users.noreply.github.com'
+          git add assets/catalog.json assets/packs.json assets/kenney-expanded
+          if git diff --cached --quiet; then
+            echo 'All selected assets already installed'
+            exit 0
+          fi
+          git commit -m 'Import genuine Kenney 2D PNG and 3D GLB assets with license metadata'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
