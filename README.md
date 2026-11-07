@@ -98,3 +98,11 @@ L'Asset Store propose un filtre **« Packs 2D/3D originaux »** activé par déf
 Les maillages procéduraux et sprites vectoriels communautaires restent consultables via **« Tout le catalogue »** ou **« Créations WarLike »** : ils ne sont plus présentés comme des modèles professionnels issus de packs. Les onglets **Sprites PNG 2D** et **Modèles GLB 3D** permettent d'isoler les fichiers sources. L'authenticité de l'auteur et la licence sont fondées sur les métadonnées du catalogue, et les vérifications automatiques contrôlent les fichiers et signatures sans certifier visuellement leur qualité artistique.
 
 Les packs complets externes Kenney (New Platformer Pack, Pixel Platformer) et Quaternius restent à importer avec leurs fichiers et notices de licence avant d'être annoncés comme installés.
+
+## Packs sélectionnés et aperçu 3D dans le Store
+
+Le fichier `assets/packs.json` référence cinq regroupements de ressources effectivement incluses : personnages 3D animés, personnages 3D supplémentaires, véhicules 3D, sprites top-down et sprites plateforme. Les packs sont des **sélections de fichiers**, pas des archives autonomes, des systèmes de conduite ou des prefabs Engine prêts à jouer. Le filtre « Pack » dans `store.html` permet d'afficher les fichiers correspondants.
+
+Le bouton **Aperçu 3D** ouvre le modèle sélectionné dans `model-viewer` ; la scène peut être pivotée et zoomée. Lorsque le GLB contient des animations, l'interface propose leur lecture. Le lecteur chargé depuis Google nécessite Internet/WebGL ; en cas d'échec, le téléchargement du fichier reste disponible. Le Store affiche aussi la présence déclarée d'animations sans inventer de rig pour les modèles statiques.
+
+**Correction de sauvegarde :** `validateBackup` rétablit désormais les fichiers `.gltf` JSON avec leur validateur dédié au lieu de les envoyer au parseur binaire GLB. Les tests couvrent les sauvegardes glTF et les références des packs, ainsi que la syntaxe du script intégré au Store. L'installation directe dans WarLike Engine reste à concevoir et à valider séparément.
