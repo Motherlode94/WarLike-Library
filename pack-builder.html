@@ -44,9 +44,9 @@ $('direct').onclick=async()=>{
  const target=window.open(origin+'/asset-store/library-bundle.html?bundleTransfer='+channel,'_blank');
  if(!target)return status('Fenêtre Engine bloquée : utilise Exporter le bundle.');
  busy=true;sync();
- let done=false,payload=null,ready=false;
+ let done=false,payload=null,ready=false,sent=false;
  const cleanup=()=>{done=true;busy=false;sync();window.removeEventListener('message',onMessage);};
- const send=()=>{if(ready&&payload&&!done)target.postMessage({type:'warlike-bundle-transfer-v2',channel,pack:payload},origin);};
+ const send=()=>{if(ready&&payload&&!done&&!sent){sent=true;target.postMessage({type:'warlike-bundle-transfer-v2',channel,pack:payload},origin);}};
  const onMessage=e=>{
   if(done||e.origin!==origin||e.source!==target||e.data?.channel!==channel)return;
   if(e.data.type==='warlike-engine-bundle-ready-v2'){ready=true;send();}
