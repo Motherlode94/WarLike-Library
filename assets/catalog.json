@@ -1352,5 +1352,49 @@
     "author": "WarLike",
     "license": "MIT",
     "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-modern-tactical-4x4",
+    "name": "Véhicule tactique 4×4 · low-poly",
+    "filename": "modern-tactical-4x4.gltf",
+    "kind": "model",
+    "collection": "Guerre moderne",
+    "description": "Véhicule blindé stylisé avec quatre roues, vitres et tourelle. Modèle statique, physique et conduite non incluses.",
+    "tags": [
+      "WarLike Original",
+      "Guerre moderne",
+      "3D",
+      "Véhicules",
+      "FPS",
+      "RTS"
+    ],
+    "size": 19045,
+    "url": "./assets/community/modern-tactical-4x4.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "animations": [],
+    "addedAt": "2026-11-07T20:00:00Z"
+  },
+  {
+    "id": "builtin-community-modern-checkpoint",
+    "name": "Poste de contrôle fortifié · low-poly",
+    "filename": "modern-checkpoint.gltf",
+    "kind": "model",
+    "collection": "Guerre moderne",
+    "description": "Point de contrôle avec toiture, abris, vitrage et poste d’observation. Modèle statique, collisions non configurées.",
+    "tags": [
+      "WarLike Original",
+      "Guerre moderne",
+      "3D",
+      "Bâtiments",
+      "FPS",
+      "RTS"
+    ],
+    "size": 10877,
+    "url": "./assets/community/modern-checkpoint.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "animations": [],
+    "addedAt": "2026-11-07T20:00:00Z"
   }
 ]
