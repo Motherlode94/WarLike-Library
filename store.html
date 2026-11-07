@@ -69,14 +69,14 @@ async function previewModel(a){
  viewerDialog.showModal();
  viewerDetailsLine((a.author||'Auteur non renseigné')+' · '+(a.license||'Licence à vérifier')+' · '+(Number(a.size||0)/1024).toFixed(0)+' Ko');
  const session=++viewerSession;
- fetch(a.url).then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.arrayBuffer()}).then(async buffer=>{const {inspect3D}=await import('./js/asset-inspection.js');const info=inspect3D(buffer,a.filename);if(!viewerDialog.open||session!==viewerSession)return;viewerDetailsLine(info.format+' · '+info.meshes+' meshes · '+info.primitives+' primitives · '+info.triangles+' triangles · '+info.vertices+' sommets');viewerDetailsLine(info.materials+' matériaux · '+info.textures+' textures · '+info.skins+' squelettes · '+info.animations.length+' clips'+(info.rigged?' · skin présent':' · skin absent'));}).catch(()=>{if(session===viewerSession&&viewerDialog.open)viewerDetailsLine('Métadonnées avancées indisponibles.');});
+ fetch(a.url).then(async response=>{if(!response.ok)throw Error('HTTP '+response.status);return response.arrayBuffer()}).then(async buffer=>{const {inspect3D}=await import('./js/asset-inspection.js');const {inspectModelColors}=await import('./js/material-preview.js');const info=inspect3D(buffer,a.filename),colors=inspectModelColors(buffer,a.filename);if(!viewerDialog.open||session!==viewerSession)return;viewerDetailsLine(info.format+' · '+info.meshes+' meshes · '+info.primitives+' primitives · '+info.triangles+' triangles · '+info.vertices+' sommets');viewerDetailsLine(info.materials+' matériaux · '+info.textures+' textures · '+info.skins+' squelettes · '+info.animations.length+' clips'+(info.rigged?' · skin présent':' · skin absent'));if(colors.warning)viewerDetailsLine('⚠ '+colors.warning);}).catch(()=>{if(session===viewerSession&&viewerDialog.open)viewerDetailsLine('Métadonnées avancées indisponibles.');});
  addViewerDownload(a);
  try{
   viewerModule??=import('https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js');
   await viewerModule;
   await customElements.whenDefined('model-viewer');
   if(!viewerDialog.open||session!==viewerSession)return;
-  const viewer=document.createElement('model-viewer');viewer.alt='Modèle 3D : '+a.name;viewer.src=a.url;viewer.setAttribute('camera-controls','');viewer.setAttribute('auto-rotate','');viewer.setAttribute('shadow-intensity','1');viewer.setAttribute('environment-image','neutral');viewer.setAttribute('touch-action','pan-y');
+  const viewer=document.createElement('model-viewer');viewer.alt='Modèle 3D : '+a.name;viewer.src=a.url;viewer.setAttribute('camera-controls','');viewer.setAttribute('auto-rotate','');viewer.setAttribute('shadow-intensity','1');viewer.setAttribute('environment-image','neutral');viewer.setAttribute('tone-mapping','neutral');viewer.setAttribute('exposure','1');viewer.setAttribute('touch-action','pan-y');
   if(a.thumbnail&&safePath(a.thumbnail))viewer.poster=a.thumbnail;
   viewer.addEventListener('load',()=>{
    $('viewerMessage').textContent='Glisse pour pivoter · molette pour zoomer.';
