@@ -1,0 +1,289 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "WarLike Library original procedural authoring"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Part 0"
+    },
+    {
+      "mesh": 1,
+      "name": "Part 1"
+    },
+    {
+      "mesh": 2,
+      "name": "Part 2"
+    },
+    {
+      "mesh": 3,
+      "name": "Part 3"
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0
+          },
+          "indices": 1,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 2
+          },
+          "indices": 3,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 4
+          },
+          "indices": 5,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 6
+          },
+          "indices": 7,
+          "material": 3,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "WarLike material 0",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.46,
+          0.31,
+          0.2,
+          1
+        ],
+        "metallicFactor": 0.1,
+        "roughnessFactor": 0.78
+      },
+      "doubleSided": true
+    },
+    {
+      "name": "WarLike material 1",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.13,
+          0.48,
+          0.34,
+          1
+        ],
+        "metallicFactor": 0.1,
+        "roughnessFactor": 0.78
+      },
+      "doubleSided": true
+    },
+    {
+      "name": "WarLike material 2",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.2,
+          0.6,
+          0.42,
+          1
+        ],
+        "metallicFactor": 0.1,
+        "roughnessFactor": 0.78
+      },
+      "doubleSided": true
+    },
+    {
+      "name": "WarLike material 3",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.25,
+          0.68,
+          0.44,
+          1
+        ],
+        "metallicFactor": 0.1,
+        "roughnessFactor": 0.78
+      },
+      "doubleSided": true
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 24,
+      "type": "VEC3",
+      "min": [
+        -0.20999999344348907,
+        0,
+        -0.20999999344348907
+      ],
+      "max": [
+        0.20999999344348907,
+        2.700000047683716,
+        0.20999999344348907
+      ]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5123,
+      "count": 132,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 16,
+      "type": "VEC3",
+      "min": [
+        -1,
+        0.800000011920929,
+        -1
+      ],
+      "max": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 84,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 16,
+      "type": "VEC3",
+      "min": [
+        -0.7799999713897705,
+        1.5499999523162842,
+        -0.7799999713897705
+      ],
+      "max": [
+        0.7799999713897705,
+        2.8499999046325684,
+        0.7799999713897705
+      ]
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5123,
+      "count": 84,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 6,
+      "componentType": 5126,
+      "count": 16,
+      "type": "VEC3",
+      "min": [
+        -0.5299999713897705,
+        2.200000047683716,
+        -0.5299999713897705
+      ],
+      "max": [
+        0.5299999713897705,
+        3.450000047683716,
+        0.5299999713897705
+      ]
+    },
+    {
+      "bufferView": 7,
+      "componentType": 5123,
+      "count": 84,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 288,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 288,
+      "byteLength": 264,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 552,
+      "byteLength": 192,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 744,
+      "byteLength": 168,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 912,
+      "byteLength": 192,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1104,
+      "byteLength": 168,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1272,
+      "byteLength": 192,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 1464,
+      "byteLength": 168,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "data:application/octet-stream;base64,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",
+      "byteLength": 1632
+    }
+  ]
+}
