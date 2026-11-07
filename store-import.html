@@ -19,7 +19,7 @@ async function receive(pack){
  $('status').textContent=plan.added?'✓ '+record.name+' ajouté à ta Library.':'✓ Ce fichier est déjà dans ta Library. Tes modifications sont conservées.';
  if(warning)$('status').textContent+='\n'+warning;
  $('open').href='./index.html?asset='+encodeURIComponent(plan.record.id);$('open').hidden=false;
- if(['model','image'].includes(record.kind)){$('prefab').href='./prefab-studio.html?asset='+encodeURIComponent(plan.record.id);$('prefab').hidden=false}
+ if(['model','image'].includes(record.kind)){$('prefab').href='./prefab-studio.html?asset='+encodeURIComponent(plan.record.id)+(prefabId?'&prefab='+encodeURIComponent(prefabId):'');$('prefab').hidden=false}
  return {ok:true,resourceId:plan.record.id,sha256:record.sha256,prefabId,warning};
 }
 function tell(data){window.opener?.postMessage({...data,channel},STORE_ORIGIN)}
