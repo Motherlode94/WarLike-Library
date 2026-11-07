@@ -555,7 +555,7 @@
       "Sprite 2D",
       "Personnages"
     ],
-    "size": 0,
+    "size": 1110,
     "url": "./assets/community/warlike-knight.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -573,7 +573,7 @@
       "Sprite 2D",
       "Personnages"
     ],
-    "size": 0,
+    "size": 869,
     "url": "./assets/community/warlike-rogue.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -591,7 +591,7 @@
       "Sprite 2D",
       "Ennemis"
     ],
-    "size": 0,
+    "size": 769,
     "url": "./assets/community/warlike-robot.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -609,7 +609,7 @@
       "Sprite 2D",
       "Objets"
     ],
-    "size": 0,
+    "size": 555,
     "url": "./assets/community/warlike-medic.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -627,7 +627,7 @@
       "Sprite 2D",
       "Bâtiments"
     ],
-    "size": 0,
+    "size": 779,
     "url": "./assets/community/warlike-fantasy-house.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -645,7 +645,7 @@
       "Sprite 2D",
       "Nature"
     ],
-    "size": 0,
+    "size": 446,
     "url": "./assets/community/warlike-pine.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -663,7 +663,7 @@
       "Sprite 2D",
       "Armes"
     ],
-    "size": 0,
+    "size": 611,
     "url": "./assets/community/warlike-turret-icon.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -681,7 +681,7 @@
       "Sprite 2D",
       "Interfaces"
     ],
-    "size": 0,
+    "size": 631,
     "url": "./assets/community/warlike-cyber-panel.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -699,7 +699,7 @@
       "Modèle 3D",
       "Nature"
     ],
-    "size": 0,
+    "size": 7164,
     "url": "./assets/community/warlike-pine-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -717,7 +717,7 @@
       "Modèle 3D",
       "Bâtiments"
     ],
-    "size": 0,
+    "size": 19916,
     "url": "./assets/community/warlike-watchtower-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -735,7 +735,7 @@
       "Modèle 3D",
       "Objets"
     ],
-    "size": 0,
+    "size": 9377,
     "url": "./assets/community/warlike-lamp-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -753,7 +753,7 @@
       "Modèle 3D",
       "Science-fiction"
     ],
-    "size": 0,
+    "size": 12779,
     "url": "./assets/community/warlike-scifi-beacon-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -771,7 +771,7 @@
       "Modèle 3D",
       "Bâtiments"
     ],
-    "size": 0,
+    "size": 12013,
     "url": "./assets/community/warlike-medieval-well-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -789,7 +789,7 @@
       "Sprite 2D",
       "Objets"
     ],
-    "size": 0,
+    "size": 494,
     "url": "./assets/community/warlike-barrel.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -807,7 +807,7 @@
       "Sprite 2D",
       "Objets"
     ],
-    "size": 0,
+    "size": 514,
     "url": "./assets/community/warlike-crate.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -825,7 +825,7 @@
       "Sprite 2D",
       "Armes"
     ],
-    "size": 0,
+    "size": 483,
     "url": "./assets/community/warlike-sword.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -843,7 +843,7 @@
       "Sprite 2D",
       "Objets"
     ],
-    "size": 0,
+    "size": 511,
     "url": "./assets/community/warlike-potion.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -861,7 +861,7 @@
       "Sprite 2D",
       "Objets"
     ],
-    "size": 0,
+    "size": 720,
     "url": "./assets/community/warlike-coin.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -879,7 +879,7 @@
       "Sprite 2D",
       "Terrain"
     ],
-    "size": 0,
+    "size": 426,
     "url": "./assets/community/warlike-road.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -897,7 +897,7 @@
       "Sprite 2D",
       "Nature"
     ],
-    "size": 0,
+    "size": 484,
     "url": "./assets/community/warlike-bush.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -915,7 +915,7 @@
       "Sprite 2D",
       "Armes"
     ],
-    "size": 0,
+    "size": 445,
     "url": "./assets/community/warlike-shield.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -933,7 +933,7 @@
       "Sprite 2D",
       "Interfaces"
     ],
-    "size": 0,
+    "size": 619,
     "url": "./assets/community/warlike-healthbar.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -951,7 +951,7 @@
       "Sprite 2D",
       "Effets"
     ],
-    "size": 0,
+    "size": 513,
     "url": "./assets/community/warlike-fantasy-portal.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -969,7 +969,7 @@
       "Modèle 3D",
       "Objets"
     ],
-    "size": 0,
+    "size": 7870,
     "url": "./assets/community/warlike-crate-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -987,7 +987,7 @@
       "Modèle 3D",
       "Objets"
     ],
-    "size": 0,
+    "size": 7850,
     "url": "./assets/community/warlike-bench-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -1005,7 +1005,7 @@
       "Modèle 3D",
       "Bâtiments"
     ],
-    "size": 0,
+    "size": 9031,
     "url": "./assets/community/warlike-shelter-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -1023,7 +1023,7 @@
       "Modèle 3D",
       "Science-fiction"
     ],
-    "size": 0,
+    "size": 10438,
     "url": "./assets/community/warlike-server-rack-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -1041,7 +1041,7 @@
       "Sprite 2D",
       "RPG"
     ],
-    "size": 0,
+    "size": 865,
     "url": "./assets/community/rpg-mage.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1059,7 +1059,7 @@
       "Sprite 2D",
       "RPG"
     ],
-    "size": 0,
+    "size": 756,
     "url": "./assets/community/rpg-skeleton.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1077,7 +1077,7 @@
       "Sprite 2D",
       "FPS / TPS"
     ],
-    "size": 0,
+    "size": 803,
     "url": "./assets/community/fps-medic.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1095,7 +1095,7 @@
       "Sprite 2D",
       "FPS / TPS"
     ],
-    "size": 0,
+    "size": 602,
     "url": "./assets/community/fps-ammo.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1113,7 +1113,7 @@
       "Sprite 2D",
       "RTS"
     ],
-    "size": 0,
+    "size": 680,
     "url": "./assets/community/rts-command.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1131,7 +1131,7 @@
       "Sprite 2D",
       "RTS"
     ],
-    "size": 0,
+    "size": 525,
     "url": "./assets/community/rts-resource.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1149,7 +1149,7 @@
       "Sprite 2D",
       "Simulation"
     ],
-    "size": 0,
+    "size": 707,
     "url": "./assets/community/sim-counter.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1167,7 +1167,7 @@
       "Sprite 2D",
       "Simulation"
     ],
-    "size": 0,
+    "size": 749,
     "url": "./assets/community/sim-tractor.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1185,7 +1185,7 @@
       "Sprite 2D",
       "Horreur"
     ],
-    "size": 0,
+    "size": 449,
     "url": "./assets/community/horror-key.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1203,7 +1203,7 @@
       "Sprite 2D",
       "Horreur"
     ],
-    "size": 0,
+    "size": 519,
     "url": "./assets/community/horror-eye.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1221,7 +1221,7 @@
       "Sprite 2D",
       "Sport"
     ],
-    "size": 0,
+    "size": 442,
     "url": "./assets/community/sport-ball.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1239,7 +1239,7 @@
       "Sprite 2D",
       "Plateforme 2D"
     ],
-    "size": 0,
+    "size": 441,
     "url": "./assets/community/platform-crystal.svg",
     "author": "WarLike",
     "license": "MIT",
@@ -1257,7 +1257,7 @@
       "Modèle 3D",
       "FPS / TPS"
     ],
-    "size": 0,
+    "size": 9664,
     "url": "./assets/community/fps-supply-crate.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -1275,7 +1275,7 @@
       "Modèle 3D",
       "RTS"
     ],
-    "size": 0,
+    "size": 14433,
     "url": "./assets/community/rts-radar-tower.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -1293,7 +1293,7 @@
       "Modèle 3D",
       "Simulation"
     ],
-    "size": 0,
+    "size": 17652,
     "url": "./assets/community/sim-market-stall.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -1311,7 +1311,7 @@
       "Modèle 3D",
       "Horreur"
     ],
-    "size": 0,
+    "size": 12981,
     "url": "./assets/community/horror-stone-altar.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -1329,7 +1329,7 @@
       "Modèle 3D",
       "RPG"
     ],
-    "size": 0,
+    "size": 11082,
     "url": "./assets/community/rpg-treasure-chest.gltf",
     "author": "WarLike",
     "license": "MIT",
@@ -1347,7 +1347,7 @@
       "Modèle 3D",
       "Sport"
     ],
-    "size": 0,
+    "size": 18907,
     "url": "./assets/community/sport-goal.gltf",
     "author": "WarLike",
     "license": "MIT",
