@@ -92,7 +92,7 @@ function render(){
   if(a.thumbnail&&safePath(a.thumbnail)){const img=document.createElement('img');img.loading='lazy';img.src=a.thumbnail;img.alt='Aperçu de '+a.name;img.onerror=()=>{img.remove();prev.textContent='◈'};prev.append(img)}
   else if(a.kind==='image'&&safePath(a.url)){const img=document.createElement('img');img.loading='lazy';img.src=a.url;img.alt='Aperçu de '+a.name;prev.append(img)}
   else{const span=document.createElement('span');span.className='fallback';span.textContent=a.kind==='audio'?'♫':a.kind==='script'?'⌘':'◈';prev.append(span)}
-  const info=document.createElement('div');info.className='asset-info',heading=document.createElement('h3');heading.textContent=a.name;
+  const info=document.createElement('div');info.className='asset-info';const heading=document.createElement('h3');heading.textContent=a.name;
   const desc=document.createElement('p');desc.textContent=a.description||a.collection||'';
   const byline=document.createElement('span');byline.className='byline';byline.textContent=(isVerified(a)?'PACK SOURCE · ':'CRÉATION / AUTRE · ')+(a.author||'WarLike')+' · '+(a.license||'Licence à vérifier')+' · '+(a.collection||'Autres');
   const actions=document.createElement('div');actions.className='actions';const meta=document.createElement('div');meta.className='asset-meta';const kind=document.createElement('span');kind.textContent=a.kind==='model'?'Modèle 3D':a.kind==='image'?'Sprite 2D':a.kind;meta.append(kind);if(a.kind==='model'){const animation=document.createElement('span');animation.textContent=a.animations?.length?a.animations.length+' animations':'Statique ou non renseigné';meta.append(animation)}
