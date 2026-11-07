@@ -5,6 +5,7 @@
 <h3>Composants</h3><p class="muted">Les valeurs sont en unités locales WarLike. Un composant dans un enfant remplace celui du parent.</p><div id="components"></div><div class="actions"><button class="primary" id="save">Enregistrer le prefab</button><button id="directInstall" class="primary">Installer dans Engine</button><button id="download">Exporter pour Engine</button><button id="reset">Nouvelle définition</button></div><p id="status" role="status"></p></section>
 <section class="panel"><h2>Mes prefabs</h2><label for="existing">Définition enregistrée</label><select id="existing"><option value="">Nouvelle définition</option></select><div class="actions"><button id="load">Ouvrir</button><button id="delete">Supprimer</button></div><h3>Résultat résolu</h3><pre id="preview">Sélectionne un asset puis enregistre un prefab.</pre><div class="notice"><strong>Limite du transfert</strong><p>Le transfert produit un fichier .wlpkg.json contenant le vrai GLB ou PNG et sa configuration (25 Mo maximum). Les références de scripts sont conservées mais leurs fichiers ne sont pas encore inclus dans ce format.</p></div></section></div>
 <script type="module">
+import {libraryAssets,resourceBytes} from './js/resource-file.js';
 import {createPrefab,readPrefabs,savePrefab,resolvePrefab,exportPrefabPackage} from './js/prefab-studio.js';
 import {inspectVehicleNodes,checkVehicleBindings} from './js/vehicle-rig.js';
 const $=id=>document.getElementById(id);let assets=[],draftId=null,vehicleNodes=[],vehicleSource='';
@@ -36,8 +37,7 @@ function ui(){const host=$('components');host.replaceChildren();
 }
 async function inspectSelectedVehicle(){try{
  const asset=assets.find(a=>a.id===$('source').value);if(!asset||!asset.url?.toLowerCase().endsWith('.glb'))throw Error('Sélectionne un fichier GLB pour inspecter ses pièces.');
- const res=await fetch(asset.url,{credentials:'same-origin'});if(!res.ok)throw Error('GLB inaccessible : HTTP '+res.status);
- const data=await res.arrayBuffer();if(data.byteLength>32*1024*1024)throw Error('GLB supérieur à 32 Mo.');
+ const data=await resourceBytes(asset);if(data.byteLength>32*1024*1024)throw Error('GLB supérieur à 32 Mo.');
  vehicleNodes=inspectVehicleNodes(data);vehicleSource=asset.id;
  const names=vehicleNodes.map(n=>n.name).filter(Boolean);$('vehiclePartNames').replaceChildren(...names.map(x=>new Option(x)));
  $('vehicleNodes').textContent=vehicleNodes.length+' nœuds détectés, '+names.length+' nommés. Les animations et articulations doivent être configurées dans Engine.';
@@ -71,13 +71,12 @@ $('load').onclick=()=>{const p=readPrefabs().find(x=>x.id===$('existing').value)
 $('delete').onclick=()=>{const id=$('existing').value;if(!id)return;try{const current=readPrefabs();if(current.some(p=>p.parentId===id))throw Error('Supprime les variantes dépendantes avant le parent.');localStorage.setItem('warlike.library.prefabs.v1',JSON.stringify(current.filter(p=>p.id!==id)));reset();refresh();notice('Prefab supprimé.')}catch(e){notice(e.message,true)}};
 $('reset').onclick=reset;
 const ENGINE_ORIGIN='https://warlike-engine.pages.dev';
-const ENGINE_IMPORT=ENGINE_ORIGIN+'/asset-store/library-import.html';
+const ENGINE_IMPORT=ENGINE_ORIGIN+'/library-import.html';
 async function preparePack(){
  const p=savePrefab(build()),a=assets.find(a=>a.id===p.assetId),ext=a.filename.split('.').pop().toLowerCase();
  if(!((p.mode==='3d'&&ext==='glb')||(p.mode==='2d'&&ext==='png')))throw Error('Le transfert Engine accepte les modèles GLB et sprites PNG.');
  notice('Lecture du modèle GLB et vérification des données…');
- const response=await fetch(a.url,{credentials:'same-origin'});if(!response.ok)throw Error('GLB inaccessible : '+response.status);
- const bytes=new Uint8Array(await response.arrayBuffer());if(bytes.length>25*1024*1024||bytes.length<20)throw Error('GLB vide ou supérieur à 25 Mo.');
+ const bytes=new Uint8Array(await resourceBytes(a));if(bytes.length>25*1024*1024||bytes.length<20)throw Error('GLB vide ou supérieur à 25 Mo.');
  const view=new DataView(bytes.buffer);if(ext==='glb'&&(view.getUint32(0,true)!==0x46546c67||view.getUint32(4,true)!==2||view.getUint32(8,true)!==bytes.length))throw Error('GLB binaire invalide.');if(ext==='png'&&!(bytes[0]===137&&bytes[1]===80&&bytes[2]===78&&bytes[3]===71&&bytes[4]===13&&bytes[5]===10&&bytes[6]===26&&bytes[7]===10))throw Error('PNG invalide.');
  const sha=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));const sha256=Array.from(sha,b=>b.toString(16).padStart(2,'0')).join('');
  let binary='';for(let i=0;i<bytes.length;i+=32768)binary+=String.fromCharCode(...bytes.subarray(i,i+32768));
@@ -118,5 +117,5 @@ $('directInstall').onclick=async()=>{
  }catch(e){notice(e.message,true);cleanup()}
 };
 
-try{const res=await fetch('./assets/catalog.json',{credentials:'same-origin'});if(!res.ok)throw Error('Catalogue HTTP '+res.status);assets=(await res.json()).filter(a=>['image','model'].includes(a.kind)&&a.url?.startsWith('./assets/'));$('source').replaceChildren(...assets.map(a=>new Option((a.kind==='model'?'3D · ':'2D · ')+a.name,a.id)));ui();const requested=new URLSearchParams(location.search).get('asset');if(requested&&assets.some(a=>a.id===requested))$('source').value=requested;refresh();$('name').value=assets.find(a=>a.id===$('source').value)?.name||'';display();notice(assets.length+' modèles et images disponibles.')}catch(e){notice('Chargement impossible : '+e.message,true)}
+try{assets=(await libraryAssets()).filter(a=>['image','model'].includes(a.kind));$('source').replaceChildren(...assets.map(a=>new Option((a.kind==='model'?'3D · ':'2D · ')+a.name,a.id)));ui();const requested=new URLSearchParams(location.search).get('asset');if(requested&&assets.some(a=>a.id===requested))$('source').value=requested;refresh();$('name').value=assets.find(a=>a.id===$('source').value)?.name||'';display();notice(assets.length+' modèles et images disponibles.')}catch(e){notice('Chargement impossible : '+e.message,true)}
 </script></main></body></html>

@@ -42,7 +42,7 @@ test('standalone Prefab Studio has source selection and export controls',()=>{
 });
 
 test('Prefab Studio and Store inline scripts parse after UI updates',()=>{
- for(const path of ['prefab-studio.html','store.html']){
+ for(const path of ['prefab-studio.html','store-import.html','pack-builder.html']){
   const html=readFileSync(new URL('../'+path,import.meta.url),'utf8');
   const sources=[...html.matchAll(/<script type="module">([\s\S]*?)<\/script>/g)].map(m=>m[1]);
   assert.equal(sources.length,1,'one inline module in '+path);

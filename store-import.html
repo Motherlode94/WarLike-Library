@@ -1,0 +1,38 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WarLike Library — Recevoir un asset</title><style>:root{font:16px/1.6 system-ui;color-scheme:dark;background:#151c20;color:#eef3eb}main{max-width:750px;margin:8vh auto;padding:25px;border:1px solid #556a51;border-radius:16px;background:#1f2927}a{color:#c4f582}button{font:inherit;background:#c4f582;color:#17221b;padding:10px 16px;border:0;border-radius:8px;cursor:pointer}.actions{display:flex;gap:16px;flex-wrap:wrap}#status{white-space:pre-wrap}small{color:#b6c5b7}</style><main><a href="./">← WarLike Library</a><h1>Ajouter à ta Library</h1><p>Les fichiers reçus du store sont vérifiés et conservés dans ta bibliothèque locale. Prépare ensuite leurs prefabs et installe-les dans Engine depuis Library.</p><p id="status" role="status">Connexion au store…</p><div class="actions"><a id="open" href="./" hidden>Ouvrir la ressource dans Library →</a><a id="prefab" href="./prefab-studio.html" hidden>Préparer / installer dans Engine →</a></div><hr><label>Importer un paquet Store JSON <input id="file" type="file" accept=".json,application/json"></label><small>Ce parcours conserve le fichier, son auteur, sa licence et son empreinte.</small><script type="module">
+import {openStore,readAll,writeMany} from './js/storage.js';
+import {STORE_ORIGIN,validStoreMessage,parseStoreAsset,planStoreImport} from './js/store-transfer.js';
+import {savePrefab,readPrefabs} from './js/prefab-studio.js';
+const $=id=>document.getElementById(id),channel=new URLSearchParams(location.search).get('storeTransfer');
+let ready=false,busy=false;const completed=new Map();
+async function receive(pack){
+ const record=await parseStoreAsset(pack),all=await readAll(),plan=planStoreImport(record,all);
+ let prefabId=null,warning=null;
+ // Validate optional presets before writing binary data. Library owns native prefab creation.
+ if(pack.preset){
+  const p=pack.preset;if(!p||p.mode!==(record.kind==='model'?'3d':'2d'))throw Error('Type de préréglage incompatible.');
+  const {validatePrefab}=await import('./js/prefab-studio.js');
+  const value={schema:'warlike.prefab.v1',id:'store-prefab-'+record.sha256.slice(0,32),name:record.name,assetId:plan.record.id,mode:p.mode,components:p.components};
+  validatePrefab(value);prefabId=value.id;
+  if(plan.added)await writeMany([record]);
+  try{if(!readPrefabs().some(p=>p.id===prefabId))savePrefab(value)}catch(error){warning='Ressource enregistrée, mais préréglage non créé : '+error.message;prefabId=null;}
+ }else if(plan.added)await writeMany([record]);
+ $('status').textContent=plan.added?'✓ '+record.name+' ajouté à ta Library.':'✓ Ce fichier est déjà dans ta Library. Tes modifications sont conservées.';
+ if(warning)$('status').textContent+='\n'+warning;
+ $('open').href='./index.html?asset='+encodeURIComponent(plan.record.id);$('open').hidden=false;
+ if(['model','image'].includes(record.kind)){$('prefab').href='./prefab-studio.html?asset='+encodeURIComponent(plan.record.id);$('prefab').hidden=false}
+ return {ok:true,resourceId:plan.record.id,sha256:record.sha256,prefabId,warning};
+}
+function tell(data){window.opener?.postMessage({...data,channel},STORE_ORIGIN)}
+window.addEventListener('message',async event=>{
+ if(!validStoreMessage(event,{opener:window.opener,channel}))return;
+ if(event.data.type==='warlike-store-ping-v1'){if(ready)tell({type:'warlike-library-store-ready-v1'});return}
+ if(!ready||busy||event.data.type!=='warlike-store-asset-v1')return;
+ const key=event.data.pack?.binary?.sha256;
+ if(completed.has(key)){tell({type:'warlike-library-store-saved-v1',...completed.get(key)});return}
+ busy=true;$('status').textContent='Vérification du fichier et de ses textures…';
+ try{const result=await receive(event.data.pack);completed.set(key,result);tell({type:'warlike-library-store-saved-v1',...result})}
+ catch(error){$('status').textContent='Import refusé : '+error.message;tell({type:'warlike-library-store-saved-v1',ok:false,error:error.message})}finally{busy=false}
+});
+$('file').onchange=async event=>{if(!ready||busy)return;busy=true;try{const file=event.target.files[0];if(!file||file.size>45*1024*1024)throw Error('Paquet trop volumineux.');await receive(JSON.parse(await file.text()))}catch(e){$('status').textContent='Import refusé : '+e.message}finally{busy=false;event.target.value=''}};
+try{await openStore();ready=true;if(window.opener&&/^[a-f0-9]{40}$/.test(channel||''))tell({type:'warlike-library-store-ready-v1'});else $('status').textContent='Ouvre « Ajouter à Library » dans le store, ou importe un paquet JSON.';}catch(e){$('status').textContent='Stockage Library indisponible : '+e.message}
+</script></main></html>

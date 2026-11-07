@@ -22,18 +22,9 @@ test('all pack references point to real assets and do not promise playable prefa
   }
  }
 });
-test('inline asset store JavaScript compiles before Cloudflare deployment',()=>{
+test('old Library store bookmarks redirect to the standalone provider',()=>{
  const html=readFileSync(new URL('store.html',root),'utf8');
- const source=[...html.matchAll(/<script type="module">([\s\S]*?)<\/script>/g)].map(m=>m[1]);
- assert.equal(source.length,1);
- new Script('(async()=>{'+source[0]+'})()',{filename:'store-inline.js'});
- assert.ok(html.includes('id="assetViewer"'));
- assert.ok(html.includes('previewModel(a)'));
-});
-
-test('store card renderer declares heading locally before its first use',()=>{
- const html=readFileSync(new URL('store.html',root),'utf8');
- assert.ok(html.includes("const heading=document.createElement('h3');heading.textContent=a.name;"));
- assert.ok(!html.includes("info.className='asset-info',heading="));
- assert.ok(html.includes('info.append(heading,meta,desc,byline,actions)'));
+ assert.ok(html.includes('https://warlike-asset-stores.pages.dev/'));
+ assert.ok(html.includes('location.search+location.hash'));
+ assert.ok(!html.includes('assetViewer'));
 });

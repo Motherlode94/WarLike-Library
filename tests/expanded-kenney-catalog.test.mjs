@@ -5,10 +5,7 @@ import {runInNewContext} from 'node:vm';
 const root=new URL('../',import.meta.url);
 const assets=JSON.parse(readFileSync(new URL('assets/catalog.json',root),'utf8'));
 const incoming=assets.filter(a=>a.id.startsWith('builtin-kenney-expanded-'));
-const html=readFileSync(new URL('store.html',root),'utf8');
-const match=html.match(/const safePath=(.+);\n/);
-assert.ok(match,'Store must expose a path validator');
-const safePath=runInNewContext('('+match[1]+')');
+import {safeCatalogPath as safePath} from '../js/catalog-path.js';
 test('real Kenney expanded assets and thumbnails are bundled and byte-verified',()=>{
  assert.equal(incoming.filter(a=>a.kind==='model').length,154);
  assert.equal(incoming.filter(a=>a.kind==='image').length,232);
@@ -34,10 +31,7 @@ test('real Kenney expanded assets and thumbnails are bundled and byte-verified',
   }
  }
 });
-test('Store renders one page at a time and retains genuine source filtering',()=>{
- assert.ok(html.includes('list.slice(0,visibleCount)'));
- assert.ok(html.includes('visibleCount+=48'));
- assert.ok(html.includes('isVerified(a)'));
+test('Library validates builtin source paths and rejects traversal or remote URLs',()=>{
  assert.equal(safePath('./assets/kenney-expanded/3d/car-kit/../../evil.glb'),null);
  assert.equal(safePath('https://untrusted.invalid/evil.glb'),null);
 });

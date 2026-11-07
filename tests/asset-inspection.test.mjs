@@ -26,7 +26,9 @@ test('inspector rejects non GLB bytes and unsupported formats',()=>{
  assert.equal(imageMode('sprite.png'),'PNG');
  assert.equal(formatAssetBytes(2048),'2.0 Ko');
 });
-test('store exposes genuine 2D inspection controls, 3D metadata and preview buttons',()=>{
- const html=readFileSync(new URL('store.html',root),'utf8');
- for(const fragment of ['previewSprite(a)','previewModel(a)','spriteZoom','sprite-stage checker','inspect3D(buffer,a.filename)','Aperçu 2D','Aperçu 3D'])assert.ok(html.includes(fragment),fragment);
+test('Library links to the independent provider and receives real files',()=>{
+ const html=readFileSync(new URL('index.html',root),'utf8');
+ assert.ok(html.includes('https://warlike-asset-stores.pages.dev/'));
+ const receiver=readFileSync(new URL('store-import.html',root),'utf8');
+ assert.ok(receiver.includes('parseStoreAsset'));assert.ok(receiver.includes('writeMany([record])'));
 });
