@@ -16,7 +16,7 @@ test('prefabs validate components, preserve inherited values and apply variants'
  assert.equal(result.components.renderer.castShadow,false);
  assert.deepEqual(result.components.transform.scale,[1,1,1]);
  assert.throws(()=>savePrefab({...parent,parentId:child.id},storage),/cyclique/);
- assert.throws(()=>savePrefab({...child,assetId:'wrong'},storage),/même modèle/);
+ assert.throws(()=>savePrefab({...child,assetId:'wrong'},storage),/conserver le modèle/);
 });
 test('prefab export preserves provenance while accurately declaring missing binary payload',()=>{
  const storage=store(),p=savePrefab(createPrefab(image,{id:'image-1',components:{renderer:{visible:true}}}),storage);
