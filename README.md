@@ -114,3 +114,13 @@ Le Store propose désormais un bouton **Aperçu 2D** sur les fichiers image : vi
 Dans l'**Aperçu 3D**, `js/asset-inspection.js` analyse les fichiers GLB et glTF embarqués et expose les informations vérifiables de leurs scènes : nombre de maillages, primitives, sommets, triangles estimés selon les modes de primitives, matériaux, textures, skins et clips d'animation. Les animations disponibles sont lues dans le viewer lorsque le modèle les fournit. La présence d'un skin ne garantit pas à elle seule un personnage prêt à être joué : l'Animator et les comportements Engine doivent encore être configurés.
 
 Les fonctionnalités d'aperçu opèrent sur les assets existants et **n'ajoutent pas de faux personnages ni de modèles externes**. L'inspection client ne rend pas un modèle photoréaliste ou prêt pour la physique du moteur.
+
+## Prefab Studio et transfert réel vers WarLike Engine (beta)
+
+La page [Prefab Studio](https://warlike-library.pages.dev/prefab-studio.html) offre une interface pour créer des prefabs à partir des assets 2D/3D déjà catalogués, configurer Transform, Renderer, Collider, Animator et Rigidbody et enregistrer des **variantes héritant du prefab parent**. Les configurations sont validées et enregistrées localement dans le navigateur. Le Store comporte un bouton **Créer un prefab** pour les fichiers 2D/3D.
+
+Pour les **modèles GLB 3D**, **Exporter pour Engine** télécharge désormais un fichier `.wlpkg.json` contenant les vrais octets du modèle, le prefab résolu et une empreinte SHA-256. Sur [l'importateur de WarLike Engine](https://warlike-engine.pages.dev/asset-store/library-import.html), sélectionner ce fichier : le moteur vérifie les données, conserve le GLB dans IndexedDB sur **son propre domaine** et installe un prefab natif référant au modèle. Les variantes sont exportées avec leurs propriétés héritées résolues ; leurs dépendances parentes ne sont pas synchronisées automatiquement après import.
+
+Les imports dans la bibliothèque principale contrôlent désormais davantage de signatures de fichiers (PNG/JPEG/WebP/GIF/SVG et GLB/glTF) ; un glTF à textures ou buffers externes est refusé plutôt qu'enregistré avec des dépendances manquantes.
+
+**Limites actuelles :** seul le transfert GLB 3D est implémenté de bout en bout au niveau stockage local ; le transfert des PNG 2D, les glTF multi-fichiers, l'import automatique sans téléchargement, et le packaging des fichiers 3D importés dans les exports de jeux restent incomplets. Aucun compte cloud ou stockage distant utilisateur n'est opérationnel : un schéma D1 et une architecture de sécurité sont préparés sous `cloud/`, sans service de connexion déployé. Les tests automatiques ne remplacent pas un test Scene → Play → Export dans le navigateur.
