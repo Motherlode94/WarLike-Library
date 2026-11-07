@@ -90,3 +90,11 @@ Neuf fichiers originaux supplémentaires, issus de packs Kenney sous licence **C
 Les modèles 3D sont accompagnés de cinq vignettes WebP originelles dans `assets/kenney/thumbs/`. Toutes les entrées du catalogue mentionnent **Kenney**, la licence CC0 et la page d'origine. Les GLB sont des modèles artistiques réels, mais l'ajout au catalogue ne signifie pas que chacun est riggé ou préconfiguré comme prefab jouable. Les PNG sont de vrais sprites de jeux, mais le Pixel Vehicle Pack est volontairement du pixel art, pas du photoréalisme. La provenance de ces copies est le dépôt public `Hidencod/tge-assets` pour les modèles 3D et `shorepine/kenney` pour les 2D, reprenant les packs Kenney ; conserver les avis de licence Kenney pour la redistribution.
 
 Le test `tests/authentic-kenney-assets.test.mjs` contrôle la présence, les signatures binaires PNG, GLB et WebP, les tailles et les maillages 3D. La distinction entre originaux Kenney et productions low-poly internes reste explicite dans chaque fiche.
+
+## Sélection authentique 2D / 3D
+
+L'Asset Store propose un filtre **« Packs 2D/3D originaux »** activé par défaut. Cette vue n'affiche que les fichiers réellement intégrés au dépôt (PNG/WebP ou GLB), attribués aux éditeurs Kenney ou Quaternius avec leur source et licence CC0. Les cartes donnent accès au téléchargement du fichier et au lien vers le pack d'origine.
+
+Les maillages procéduraux et sprites vectoriels communautaires restent consultables via **« Tout le catalogue »** ou **« Créations WarLike »** : ils ne sont plus présentés comme des modèles professionnels issus de packs. Les onglets **Sprites PNG 2D** et **Modèles GLB 3D** permettent d'isoler les fichiers sources. L'authenticité de l'auteur et la licence sont fondées sur les métadonnées du catalogue, et les vérifications automatiques contrôlent les fichiers et signatures sans certifier visuellement leur qualité artistique.
+
+Les packs complets externes Kenney (New Platformer Pack, Pixel Platformer) et Quaternius restent à importer avec leurs fichiers et notices de licence avant d'être annoncés comme installés.
