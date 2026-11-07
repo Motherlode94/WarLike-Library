@@ -51,3 +51,11 @@ Cette page donne accès aux rayons spécialisés de WarLike Engine : **Armes**, 
 **Frontière fonctionnelle :** les ressources des rayons Engine sont hébergées sur `warlike-engine.pages.dev`. Library ne les réhéberge pas et n'annonce aucun import inter-domaines ou synchronisation : le navigateur isole les bases IndexedDB de ces deux origines. Une éventuelle fédération et une installation Engine ↔ Library devront utiliser un protocole d'import/export explicite ou une API contrôlée.
 
 La syntaxe du script de cette nouvelle page a été vérifiée ; navigation, fichiers téléchargeables et publication Cloudflare nécessitent encore une validation en navigateur.
+
+## Pack Game Assets — ressources supplémentaires pour créer des jeux
+
+La bibliothèque contient désormais **68 ressources intégrées**, dont **18 nouvelles ressources** ajoutées dans cette livraison : **12 sprites vectoriels 2D SVG** et **6 modèles 3D glTF 2.0 autonomes**. Les catégories couvertes comprennent **RPG, FPS/TPS, RTS, simulation, horreur, sport et plateforme 2D**. Exemples : mage, squelette, médecin tactique, boîte de munitions, centre de commandement, minerais, comptoir, tracteur, clé, œil spectral, ballon, cristal ; puis caisse militaire, radar, étal de marché, autel, coffre et but de football en 3D.
+
+Tous ces fichiers sont **présents dans `assets/community/`** et catalogués dans `assets/catalog.json` avec leur auteur WarLike, licence MIT, catégorie et taille réelle tirée des métadonnées GitHub. Les SVG sont des dessins originaux exploitables comme illustrations/sprites statiques ; ils n'ont pas de rig ni de frames d'animation. Les glTF sont des modèles *low-poly* originaux avec géométrie et buffers embarqués, sans mouvements/IA/physique prédéfinis. Ils sont autonomes mais ne constituent pas des prefabs 3D directement jouables. Les imports et aperçus SVG/glTF sont gérés par la Library, sous réserve de prise en charge WebGL pour les aperçus 3D.
+
+Le test `tests/game-assets-library.test.mjs` contrôle le catalogue, les chemins locaux, la présence des fichiers et la structure des ressources. Pour consulter les fichiers : `store.html` ou l'interface principale Library.
