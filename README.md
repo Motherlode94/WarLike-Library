@@ -54,7 +54,7 @@ La syntaxe du script de cette nouvelle page a été vérifiée ; navigation, fic
 
 ## Pack Game Assets — ressources supplémentaires pour créer des jeux
 
-La bibliothèque contient désormais **74 ressources intégrées**, dont **18 ressources du pack Game Assets** : **12 sprites vectoriels 2D SVG** et **6 modèles 3D glTF 2.0 autonomes**. Les catégories couvertes comprennent **RPG, FPS/TPS, RTS, simulation, horreur, sport et plateforme 2D**. Exemples : mage, squelette, médecin tactique, boîte de munitions, centre de commandement, minerais, comptoir, tracteur, clé, œil spectral, ballon, cristal ; puis caisse militaire, radar, étal de marché, autel, coffre et but de football en 3D.
+La bibliothèque contient désormais **83 ressources intégrées**, dont **18 ressources du pack Game Assets** : **12 sprites vectoriels 2D SVG** et **6 modèles 3D glTF 2.0 autonomes**. Les catégories couvertes comprennent **RPG, FPS/TPS, RTS, simulation, horreur, sport et plateforme 2D**. Exemples : mage, squelette, médecin tactique, boîte de munitions, centre de commandement, minerais, comptoir, tracteur, clé, œil spectral, ballon, cristal ; puis caisse militaire, radar, étal de marché, autel, coffre et but de football en 3D.
 
 Tous ces fichiers sont **présents dans `assets/community/`** et catalogués dans `assets/catalog.json` avec leur auteur WarLike, licence MIT, catégorie et taille réelle tirée des métadonnées GitHub. Les SVG sont des dessins originaux exploitables comme illustrations/sprites statiques ; ils n'ont pas de rig ni de frames d'animation. Les glTF sont des modèles *low-poly* originaux avec géométrie et buffers embarqués, sans mouvements/IA/physique prédéfinis. Ils sont autonomes mais ne constituent pas des prefabs 3D directement jouables. Les imports et aperçus SVG/glTF sont gérés par la Library, sous réserve de prise en charge WebGL pour les aperçus 3D.
 
@@ -77,3 +77,16 @@ Quatre nouveaux fichiers glTF 2.0 sont directement inclus dans `assets/community
 - **Personnages** : `character-scout.gltf` (éclaireur équipé, 1 048 triangles) et `character-field-medic.gltf` (médecin de terrain, 1 048 triangles).
 
 Le site Asset Store affiche maintenant deux départements directs **Véhicules 3D** et **Personnages 3D**, liés aux filtres de collection. Chaque modèle contient une vraie géométrie 3D embarquée et est sous licence MIT, mais reste **low-poly non riggé et non animé**. Les personnages demandent un squelette pour l'Animator ; les véhicules exigent des contrôleurs de physique et de conduite avant d'être jouables. Les modèles Kenney/Quaternius déjà livrés restent disponibles. Le test `tests/vehicles-characters.test.mjs` vérifie les coordonnées, buffers et entrées du catalogue.
+
+## Ressources graphiques authentiques Kenney (PNG et GLB)
+
+Neuf fichiers originaux supplémentaires, issus de packs Kenney sous licence **CC0-1.0**, sont désormais inclus dans `assets/kenney/` :
+
+- 3D / Car Kit : `police-car.glb`, `ambulance.glb`, `suv.glb`.
+- 3D / Mini Characters : `character-male-b.glb`, `character-female-b.glb`.
+- 2D / Topdown Shooter : `topdown-soldier-stand.png`, `topdown-soldier-machine.png`.
+- 2D / Pixel Vehicle Pack : `pixel-police.png`, `pixel-buggy.png`.
+
+Les modèles 3D sont accompagnés de cinq vignettes WebP originelles dans `assets/kenney/thumbs/`. Toutes les entrées du catalogue mentionnent **Kenney**, la licence CC0 et la page d'origine. Les GLB sont des modèles artistiques réels, mais l'ajout au catalogue ne signifie pas que chacun est riggé ou préconfiguré comme prefab jouable. Les PNG sont de vrais sprites de jeux, mais le Pixel Vehicle Pack est volontairement du pixel art, pas du photoréalisme. La provenance de ces copies est le dépôt public `Hidencod/tge-assets` pour les modèles 3D et `shorepine/kenney` pour les 2D, reprenant les packs Kenney ; conserver les avis de licence Kenney pour la redistribution.
+
+Le test `tests/authentic-kenney-assets.test.mjs` contrôle la présence, les signatures binaires PNG, GLB et WebP, les tailles et les maillages 3D. La distinction entre originaux Kenney et productions low-poly internes reste explicite dans chaque fiche.
