@@ -3,7 +3,7 @@
 <p>Crée des configurations de composants 2D/3D à partir des fichiers présents. Les variantes héritent du prefab parent. La sauvegarde est locale à ce navigateur. Les champs véhicule lient des noms de nœuds existants ; ils ne créent pas de géométrie ni d'articulation.</p><p><a href="https://warlike-engine.pages.dev/asset-store/library-import.html" target="_blank" rel="noopener">↗ Importer un pack 3D dans WarLike Engine</a> — après téléchargement du fichier <code>.wlpkg.json</code>.</p>
 <div class="grid"><section class="panel"><h2>Édition</h2><label for="source">Asset source</label><select id="source"></select><label for="parent">Hériter de (variante)</label><select id="parent"><option value="">Nouveau prefab autonome</option></select><label for="name">Nom</label><input id="name" maxlength="160" placeholder="Ex. Soldat d'élite">
 <h3>Composants</h3><p class="muted">Les valeurs sont en unités locales WarLike. Un composant dans un enfant remplace celui du parent.</p><div id="components"></div><div class="actions"><button class="primary" id="save">Enregistrer le prefab</button><button id="directInstall" class="primary">Installer dans Engine</button><button id="download">Exporter pour Engine</button><button id="reset">Nouvelle définition</button></div><p id="status" role="status"></p></section>
-<section class="panel"><h2>Mes prefabs</h2><label for="existing">Définition enregistrée</label><select id="existing"><option value="">Nouvelle définition</option></select><div class="actions"><button id="load">Ouvrir</button><button id="delete">Supprimer</button></div><h3>Résultat résolu</h3><pre id="preview">Sélectionne un asset puis enregistre un prefab.</pre><div class="notice"><strong>Limite du transfert</strong><p>Le transfert 3D produit un fichier .wlpkg.json contenant le vrai GLB et sa configuration (25 Mo maximum). L'import se fait dans WarLike Engine. Les modèles glTF et les sprites 2D ne sont pas encore importables par ce transfert.</p></div></section></div>
+<section class="panel"><h2>Mes prefabs</h2><label for="existing">Définition enregistrée</label><select id="existing"><option value="">Nouvelle définition</option></select><div class="actions"><button id="load">Ouvrir</button><button id="delete">Supprimer</button></div><h3>Résultat résolu</h3><pre id="preview">Sélectionne un asset puis enregistre un prefab.</pre><div class="notice"><strong>Limite du transfert</strong><p>Le transfert produit un fichier .wlpkg.json contenant le vrai GLB ou PNG et sa configuration (25 Mo maximum). Les références de scripts sont conservées mais leurs fichiers ne sont pas encore inclus dans ce format.</p></div></section></div>
 <script type="module">
 import {createPrefab,readPrefabs,savePrefab,resolvePrefab,exportPrefabPackage} from './js/prefab-studio.js';
 import {inspectVehicleNodes,checkVehicleBindings} from './js/vehicle-rig.js';
@@ -74,14 +74,14 @@ const ENGINE_ORIGIN='https://warlike-engine.pages.dev';
 const ENGINE_IMPORT=ENGINE_ORIGIN+'/asset-store/library-import.html';
 async function preparePack(){
  const p=savePrefab(build()),a=assets.find(a=>a.id===p.assetId),ext=a.filename.split('.').pop().toLowerCase();
- if(!(p.mode==='3d'&&ext==='glb'))throw Error('Le transfert Engine v1 accepte uniquement les modèles GLB 3D.');
+ if(!((p.mode==='3d'&&ext==='glb')||(p.mode==='2d'&&ext==='png')))throw Error('Le transfert Engine accepte les modèles GLB et sprites PNG.');
  notice('Lecture du modèle GLB et vérification des données…');
  const response=await fetch(a.url,{credentials:'same-origin'});if(!response.ok)throw Error('GLB inaccessible : '+response.status);
  const bytes=new Uint8Array(await response.arrayBuffer());if(bytes.length>25*1024*1024||bytes.length<20)throw Error('GLB vide ou supérieur à 25 Mo.');
- const view=new DataView(bytes.buffer);if(view.getUint32(0,true)!==0x46546c67||view.getUint32(4,true)!==2||view.getUint32(8,true)!==bytes.length)throw Error('GLB binaire invalide.');
+ const view=new DataView(bytes.buffer);if(ext==='glb'&&(view.getUint32(0,true)!==0x46546c67||view.getUint32(4,true)!==2||view.getUint32(8,true)!==bytes.length))throw Error('GLB binaire invalide.');if(ext==='png'&&!(bytes[0]===137&&bytes[1]===80&&bytes[2]===78&&bytes[3]===71&&bytes[4]===13&&bytes[5]===10&&bytes[6]===26&&bytes[7]===10))throw Error('PNG invalide.');
  const sha=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));const sha256=Array.from(sha,b=>b.toString(16).padStart(2,'0')).join('');
  let binary='';for(let i=0;i<bytes.length;i+=32768)binary+=String.fromCharCode(...bytes.subarray(i,i+32768));
- const data=exportPrefabPackage(p.id,readPrefabs(),a);data.binary={encoding:'base64',data:btoa(binary),byteLength:bytes.length,sha256};
+ const data=exportPrefabPackage(p.id,readPrefabs(),a);data.binary={encoding:'base64',data:btoa(binary),byteLength:bytes.length,sha256,mime:ext==='png'?'image/png':'model/gltf-binary'};
  draftId=p.id;refresh();return {data,p};
 }
 $('download').onclick=async()=>{
@@ -89,7 +89,7 @@ $('download').onclick=async()=>{
  try{
   const {data,p}=await preparePack(),blob=new Blob([JSON.stringify(data)],{type:'application/json'});
   const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=p.id+'.wlpkg.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),5000);
-  notice('Pack GLB exporté. Import manuel possible depuis Engine.');
+  notice('Pack GLB/PNG exporté. Import manuel possible depuis Engine.');
  }catch(e){notice(e.message,true)}finally{button.disabled=false}
 };
 $('directInstall').onclick=async()=>{
