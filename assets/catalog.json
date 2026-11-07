@@ -1028,5 +1028,329 @@
     "author": "WarLike",
     "license": "MIT",
     "addedAt": "2026-11-07T18:30:00Z"
+  },
+  {
+    "id": "builtin-community-rpg-mage",
+    "name": "Mage des runes",
+    "filename": "rpg-mage.svg",
+    "kind": "image",
+    "collection": "RPG",
+    "description": "Mage avec grimoire et bâton",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "RPG"
+    ],
+    "size": 0,
+    "url": "./assets/community/rpg-mage.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-rpg-skeleton",
+    "name": "Guerrier squelette",
+    "filename": "rpg-skeleton.svg",
+    "kind": "image",
+    "collection": "RPG",
+    "description": "Guerrier mort-vivant pour combats",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "RPG"
+    ],
+    "size": 0,
+    "url": "./assets/community/rpg-skeleton.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-fps-medic",
+    "name": "Médecin tactique",
+    "filename": "fps-medic.svg",
+    "kind": "image",
+    "collection": "FPS / TPS",
+    "description": "Personnage médical équipé",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "FPS / TPS"
+    ],
+    "size": 0,
+    "url": "./assets/community/fps-medic.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-fps-ammo",
+    "name": "Boîte de munitions",
+    "filename": "fps-ammo.svg",
+    "kind": "image",
+    "collection": "FPS / TPS",
+    "description": "Caisse de ravitaillement",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "FPS / TPS"
+    ],
+    "size": 0,
+    "url": "./assets/community/fps-ammo.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-rts-command",
+    "name": "Centre de commandement",
+    "filename": "rts-command.svg",
+    "kind": "image",
+    "collection": "RTS",
+    "description": "Bâtiment militaire stratégique",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "RTS"
+    ],
+    "size": 0,
+    "url": "./assets/community/rts-command.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-rts-resource",
+    "name": "Gisement de minerai",
+    "filename": "rts-resource.svg",
+    "kind": "image",
+    "collection": "RTS",
+    "description": "Ressource minière",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "RTS"
+    ],
+    "size": 0,
+    "url": "./assets/community/rts-resource.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-sim-counter",
+    "name": "Comptoir de magasin",
+    "filename": "sim-counter.svg",
+    "kind": "image",
+    "collection": "Simulation",
+    "description": "Meuble pour magasin",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Simulation"
+    ],
+    "size": 0,
+    "url": "./assets/community/sim-counter.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-sim-tractor",
+    "name": "Tracteur agricole",
+    "filename": "sim-tractor.svg",
+    "kind": "image",
+    "collection": "Simulation",
+    "description": "Véhicule agricole stylisé",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Simulation"
+    ],
+    "size": 0,
+    "url": "./assets/community/sim-tractor.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-horror-key",
+    "name": "Clé rouillée",
+    "filename": "horror-key.svg",
+    "kind": "image",
+    "collection": "Horreur",
+    "description": "Objet d'énigme",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Horreur"
+    ],
+    "size": 0,
+    "url": "./assets/community/horror-key.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-horror-eye",
+    "name": "Œil spectral",
+    "filename": "horror-eye.svg",
+    "kind": "image",
+    "collection": "Horreur",
+    "description": "Symbole d'ennemi paranormal",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Horreur"
+    ],
+    "size": 0,
+    "url": "./assets/community/horror-eye.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-sport-ball",
+    "name": "Ballon de sport",
+    "filename": "sport-ball.svg",
+    "kind": "image",
+    "collection": "Sport",
+    "description": "Ballon pour simulation sportive",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Sport"
+    ],
+    "size": 0,
+    "url": "./assets/community/sport-ball.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-platform-crystal",
+    "name": "Cristal de plateforme",
+    "filename": "platform-crystal.svg",
+    "kind": "image",
+    "collection": "Plateforme 2D",
+    "description": "Objet collectible",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Plateforme 2D"
+    ],
+    "size": 0,
+    "url": "./assets/community/platform-crystal.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-fps-supply-crate",
+    "name": "Caisse militaire 3D",
+    "filename": "fps-supply-crate.gltf",
+    "kind": "model",
+    "collection": "FPS / TPS",
+    "description": "Caisse d'approvisionnement 3D",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "FPS / TPS"
+    ],
+    "size": 0,
+    "url": "./assets/community/fps-supply-crate.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-rts-radar-tower",
+    "name": "Tour radar 3D",
+    "filename": "rts-radar-tower.gltf",
+    "kind": "model",
+    "collection": "RTS",
+    "description": "Tour de détection stratégique",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "RTS"
+    ],
+    "size": 0,
+    "url": "./assets/community/rts-radar-tower.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-sim-market-stall",
+    "name": "Étal de marché 3D",
+    "filename": "sim-market-stall.gltf",
+    "kind": "model",
+    "collection": "Simulation",
+    "description": "Stand de commerce en 3D",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Simulation"
+    ],
+    "size": 0,
+    "url": "./assets/community/sim-market-stall.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-horror-stone-altar",
+    "name": "Autel de pierre 3D",
+    "filename": "horror-stone-altar.gltf",
+    "kind": "model",
+    "collection": "Horreur",
+    "description": "Autel cérémoniel pour jeu d'horreur",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Horreur"
+    ],
+    "size": 0,
+    "url": "./assets/community/horror-stone-altar.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-rpg-treasure-chest",
+    "name": "Coffre de trésor 3D",
+    "filename": "rpg-treasure-chest.gltf",
+    "kind": "model",
+    "collection": "RPG",
+    "description": "Coffre d'aventure avec ferrures",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "RPG"
+    ],
+    "size": 0,
+    "url": "./assets/community/rpg-treasure-chest.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
+  },
+  {
+    "id": "builtin-community-sport-goal",
+    "name": "But de football 3D",
+    "filename": "sport-goal.gltf",
+    "kind": "model",
+    "collection": "Sport",
+    "description": "Cage de football et filet en 3D",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Sport"
+    ],
+    "size": 0,
+    "url": "./assets/community/sport-goal.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T19:00:00Z"
   }
 ]
