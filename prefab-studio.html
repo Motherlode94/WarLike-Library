@@ -2,7 +2,7 @@
 :root{font:15px system-ui,sans-serif;color-scheme:dark;background:#10171b;color:#edf4f4}*{box-sizing:border-box}body{margin:0}main{max-width:1180px;margin:auto;padding:24px}a{color:#bde5b4}h1{font-size:clamp(26px,4vw,38px)}p,small{color:#b2c0c4}header{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:#1b272c;border:1px solid #385158;border-radius:13px;padding:20px}label{display:block;margin:12px 0 6px;font-weight:600}input,select,button{font:inherit;background:#111d22;color:#f5ffff;border:1px solid #566e6c;padding:10px;border-radius:8px;max-width:100%}input,select{width:100%}button{cursor:pointer}button:hover{border-color:#b2e3ac}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.primary{background:#466c53}#components label{display:flex;align-items:center;gap:10px}#components input[type=checkbox]{width:auto}.edit-row{display:flex;gap:10px;align-items:center}.edit-row input{max-width:90px}.notice{padding:12px;background:#293f39;border-radius:8px}.muted{color:#9badae;font-size:13px}#status{min-height:26px;color:#a4e9bf;white-space:pre-wrap}pre{white-space:pre-wrap;word-break:break-word;max-height:400px;overflow:auto;background:#0f1b20;padding:12px;border-radius:8px}@media(max-width:750px){.grid{grid-template-columns:1fr}}</style></head><body><main><header><div><small>WARLIKE LIBRARY / PREFABS</small><h1>Prefab Studio</h1></div><nav><a href="./">Bibliothèque</a> · <a href="./store.html">Asset Store</a> · <a href="https://warlike-engine.pages.dev/" target="_blank" rel="noopener">WarLike Engine</a></nav></header>
 <p>Crée des configurations de composants 2D/3D à partir des fichiers présents. Les variantes héritent du prefab parent. La sauvegarde est locale à ce navigateur. Les champs véhicule lient des noms de nœuds existants ; ils ne créent pas de géométrie ni d'articulation.</p><p><a href="https://warlike-engine.pages.dev/asset-store/library-import.html" target="_blank" rel="noopener">↗ Importer un pack 3D dans WarLike Engine</a> — après téléchargement du fichier <code>.wlpkg.json</code>.</p>
 <div class="grid"><section class="panel"><h2>Édition</h2><label for="source">Asset source</label><select id="source"></select><label for="parent">Hériter de (variante)</label><select id="parent"><option value="">Nouveau prefab autonome</option></select><label for="name">Nom</label><input id="name" maxlength="160" placeholder="Ex. Soldat d'élite">
-<h3>Composants</h3><p class="muted">Les valeurs sont en unités locales WarLike. Un composant dans un enfant remplace celui du parent.</p><div id="components"></div><div class="actions"><button class="primary" id="save">Enregistrer le prefab</button><button id="download">Exporter pour Engine</button><button id="reset">Nouvelle définition</button></div><p id="status" role="status"></p></section>
+<h3>Composants</h3><p class="muted">Les valeurs sont en unités locales WarLike. Un composant dans un enfant remplace celui du parent.</p><div id="components"></div><div class="actions"><button class="primary" id="save">Enregistrer le prefab</button><button id="directInstall" class="primary">Installer dans Engine</button><button id="download">Exporter pour Engine</button><button id="reset">Nouvelle définition</button></div><p id="status" role="status"></p></section>
 <section class="panel"><h2>Mes prefabs</h2><label for="existing">Définition enregistrée</label><select id="existing"><option value="">Nouvelle définition</option></select><div class="actions"><button id="load">Ouvrir</button><button id="delete">Supprimer</button></div><h3>Résultat résolu</h3><pre id="preview">Sélectionne un asset puis enregistre un prefab.</pre><div class="notice"><strong>Limite du transfert</strong><p>Le transfert 3D produit un fichier .wlpkg.json contenant le vrai GLB et sa configuration (25 Mo maximum). L'import se fait dans WarLike Engine. Les modèles glTF et les sprites 2D ne sont pas encore importables par ce transfert.</p></div></section></div>
 <script type="module">
 import {createPrefab,readPrefabs,savePrefab,resolvePrefab,exportPrefabPackage} from './js/prefab-studio.js';
@@ -70,18 +70,53 @@ $('load').onclick=()=>{const p=readPrefabs().find(x=>x.id===$('existing').value)
  if(p.components.vehicle?.enabled)inspectSelectedVehicle();$('castShadow').checked=p.components.renderer?.castShadow!==false;$('colliderShape').value=p.components.collider?.shape||'box';$('animatorClip').value=p.components.animator?.defaultClip||'';$('mass').value=p.components.rigidbody?.mass||1;display();notice('Prefab chargé.')};
 $('delete').onclick=()=>{const id=$('existing').value;if(!id)return;try{const current=readPrefabs();if(current.some(p=>p.parentId===id))throw Error('Supprime les variantes dépendantes avant le parent.');localStorage.setItem('warlike.library.prefabs.v1',JSON.stringify(current.filter(p=>p.id!==id)));reset();refresh();notice('Prefab supprimé.')}catch(e){notice(e.message,true)}};
 $('reset').onclick=reset;
-$('download').onclick=async()=>{const button=$('download');button.disabled=true;try{
+const ENGINE_ORIGIN='https://warlike-engine.pages.dev';
+const ENGINE_IMPORT=ENGINE_ORIGIN+'/asset-store/library-import.html';
+async function preparePack(){
  const p=savePrefab(build()),a=assets.find(a=>a.id===p.assetId),ext=a.filename.split('.').pop().toLowerCase();
- if(!(p.mode==='3d'&&ext==='glb'))throw Error('Le transfert Engine v1 accepte pour le moment uniquement les vrais GLB 3D. Les sprites 2D restent exportables manuellement.');
- notice('Préparation du modèle et de ses données réelles…');
- const response=await fetch(a.url,{credentials:'same-origin'});if(!response.ok)throw Error('Fichier GLB inaccessible : '+response.status);
+ if(!(p.mode==='3d'&&ext==='glb'))throw Error('Le transfert Engine v1 accepte uniquement les modèles GLB 3D.');
+ notice('Lecture du modèle GLB et vérification des données…');
+ const response=await fetch(a.url,{credentials:'same-origin'});if(!response.ok)throw Error('GLB inaccessible : '+response.status);
  const bytes=new Uint8Array(await response.arrayBuffer());if(bytes.length>25*1024*1024||bytes.length<20)throw Error('GLB vide ou supérieur à 25 Mo.');
  const view=new DataView(bytes.buffer);if(view.getUint32(0,true)!==0x46546c67||view.getUint32(4,true)!==2||view.getUint32(8,true)!==bytes.length)throw Error('GLB binaire invalide.');
  const sha=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));const sha256=Array.from(sha,b=>b.toString(16).padStart(2,'0')).join('');
  let binary='';for(let i=0;i<bytes.length;i+=32768)binary+=String.fromCharCode(...bytes.subarray(i,i+32768));
  const data=exportPrefabPackage(p.id,readPrefabs(),a);data.binary={encoding:'base64',data:btoa(binary),byteLength:bytes.length,sha256};
- const blob=new Blob([JSON.stringify(data)],{type:'application/json'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=p.id+'.wlpkg.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),5000);
- draftId=p.id;refresh();notice('Pack GLB réel exporté : modèle et configuration de prefab. Importe ce fichier depuis WarLike Engine.');
- }catch(e){notice(e.message,true)}finally{button.disabled=false}};
+ draftId=p.id;refresh();return {data,p};
+}
+$('download').onclick=async()=>{
+ const button=$('download');button.disabled=true;
+ try{
+  const {data,p}=await preparePack(),blob=new Blob([JSON.stringify(data)],{type:'application/json'});
+  const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=p.id+'.wlpkg.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),5000);
+  notice('Pack GLB exporté. Import manuel possible depuis Engine.');
+ }catch(e){notice(e.message,true)}finally{button.disabled=false}
+};
+$('directInstall').onclick=async()=>{
+ const button=$('directInstall');button.disabled=true;
+ const channel=Array.from(crypto.getRandomValues(new Uint8Array(20)),b=>b.toString(16).padStart(2,'0')).join('');
+ // Open during direct click: otherwise popup blockers may reject asynchronous window.open.
+ const receiver=window.open(ENGINE_IMPORT+'?libraryTransfer='+channel,'_blank');
+ if(!receiver){notice('Fenêtre Engine bloquée. Autorise les popups ou utilise Exporter pour Engine.',true);button.disabled=false;return}
+ let finished=false;
+ const onMessage=async event=>{
+  if(event.origin!==ENGINE_ORIGIN||event.source!==receiver||event.data?.channel!==channel||finished)return;
+  if(event.data.type==='warlike-engine-ready-v1'){
+   if(!payload)return;
+   try{receiver.postMessage({type:'warlike-library-transfer-v1',channel,pack:payload},ENGINE_ORIGIN);notice('Pack envoyé à Engine. Vérification et installation en cours…')}
+   catch(e){notice('Transfert impossible : '+e.message,true);cleanup()}
+  }else if(event.data.type==='warlike-engine-installed-v1'){
+   notice(event.data.ok?'Prefab installé dans Engine : '+event.data.name:'Engine a refusé le pack : '+event.data.error,!event.data.ok);cleanup();
+  }
+ };
+ function cleanup(){finished=true;window.removeEventListener('message',onMessage);button.disabled=false}
+ let payload=null;window.addEventListener('message',onMessage);
+ try{const result=await preparePack();payload=result.data;notice('Pack prêt. Connexion avec Engine…');
+  // A ready signal may have arrived during the file read; request another from Engine via a reload.
+  if(receiver.closed)throw Error('La fenêtre Engine a été fermée.');
+  receiver.postMessage({type:'warlike-library-ping-v1',channel},ENGINE_ORIGIN);
+ }catch(e){notice(e.message,true);cleanup()}
+};
+
 try{const res=await fetch('./assets/catalog.json',{credentials:'same-origin'});if(!res.ok)throw Error('Catalogue HTTP '+res.status);assets=(await res.json()).filter(a=>['image','model'].includes(a.kind)&&a.url?.startsWith('./assets/'));$('source').replaceChildren(...assets.map(a=>new Option((a.kind==='model'?'3D · ':'2D · ')+a.name,a.id)));ui();const requested=new URLSearchParams(location.search).get('asset');if(requested&&assets.some(a=>a.id===requested))$('source').value=requested;refresh();$('name').value=assets.find(a=>a.id===$('source').value)?.name||'';display();notice(assets.length+' modèles et images disponibles.')}catch(e){notice('Chargement impossible : '+e.message,true)}
 </script></main></body></html>
