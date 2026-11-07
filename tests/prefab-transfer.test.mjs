@@ -51,3 +51,9 @@ test('Prefab Studio and Store inline scripts parse after UI updates',()=>{
   new Script('(async()=>{'+source+'})()',{filename:path});
  }
 });
+
+test('Prefab Studio supports direct cross-origin transfer with manual fallback',()=>{
+ const html=readFileSync(new URL('../prefab-studio.html',import.meta.url),'utf8');
+ for(const token of ['id="directInstall"',"ENGINE_ORIGIN='https://warlike-engine.pages.dev'","warlike-engine-ready-v1","warlike-library-ping-v1","warlike-engine-installed-v1","event.origin!==ENGINE_ORIGIN","event.source!==receiver","preparePack()"])
+  assert.ok(html.includes(token),'missing '+token);
+});
