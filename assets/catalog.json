@@ -1486,5 +1486,194 @@
     "animations": [],
     "triangles": 1048,
     "addedAt": "2026-11-07T21:00:00Z"
+  },
+  {
+    "id": "builtin-kenney-police-car-glb",
+    "name": "Voiture de police Kenney",
+    "filename": "police-car.glb",
+    "kind": "model",
+    "collection": "Véhicules",
+    "description": "Fichier graphique original issu d'un pack Kenney CC0, conservé au format natif.",
+    "tags": [
+      "Kenney",
+      "CC0",
+      "3D",
+      "Véhicules"
+    ],
+    "size": 207584,
+    "url": "./assets/kenney/police-car.glb",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "sourceUrl": "https://kenney.nl/assets/car-kit",
+    "animations": [],
+    "addedAt": "2026-11-07T03:30:00Z"
+  },
+  {
+    "id": "builtin-kenney-ambulance-glb",
+    "name": "Ambulance Kenney",
+    "filename": "ambulance.glb",
+    "kind": "model",
+    "collection": "Véhicules",
+    "description": "Fichier graphique original issu d'un pack Kenney CC0, conservé au format natif.",
+    "tags": [
+      "Kenney",
+      "CC0",
+      "3D",
+      "Véhicules"
+    ],
+    "size": 245804,
+    "url": "./assets/kenney/ambulance.glb",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "sourceUrl": "https://kenney.nl/assets/car-kit",
+    "animations": [],
+    "addedAt": "2026-11-07T03:30:00Z"
+  },
+  {
+    "id": "builtin-kenney-suv-glb",
+    "name": "SUV Kenney",
+    "filename": "suv.glb",
+    "kind": "model",
+    "collection": "Véhicules",
+    "description": "Fichier graphique original issu d'un pack Kenney CC0, conservé au format natif.",
+    "tags": [
+      "Kenney",
+      "CC0",
+      "3D",
+      "Véhicules"
+    ],
+    "size": 219840,
+    "url": "./assets/kenney/suv.glb",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "sourceUrl": "https://kenney.nl/assets/car-kit",
+    "animations": [],
+    "addedAt": "2026-11-07T03:30:00Z"
+  },
+  {
+    "id": "builtin-kenney-character-male-b-glb",
+    "name": "Personnage masculin B · Kenney",
+    "filename": "character-male-b.glb",
+    "kind": "model",
+    "collection": "Personnages",
+    "description": "Fichier graphique original issu d'un pack Kenney CC0, conservé au format natif.",
+    "tags": [
+      "Kenney",
+      "CC0",
+      "3D",
+      "Personnages"
+    ],
+    "size": 253828,
+    "url": "./assets/kenney/character-male-b.glb",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "sourceUrl": "https://kenney.nl/assets/mini-characters",
+    "animations": [],
+    "addedAt": "2026-11-07T03:30:00Z"
+  },
+  {
+    "id": "builtin-kenney-character-female-b-glb",
+    "name": "Personnage féminin B · Kenney",
+    "filename": "character-female-b.glb",
+    "kind": "model",
+    "collection": "Personnages",
+    "description": "Fichier graphique original issu d'un pack Kenney CC0, conservé au format natif.",
+    "tags": [
+      "Kenney",
+      "CC0",
+      "3D",
+      "Personnages"
+    ],
+    "size": 258632,
+    "url": "./assets/kenney/character-female-b.glb",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "sourceUrl": "https://kenney.nl/assets/mini-characters",
+    "animations": [],
+    "addedAt": "2026-11-07T03:30:00Z"
+  },
+  {
+    "id": "builtin-kenney-topdown-soldier-stand-png",
+    "name": "Soldat 2D · debout",
+    "filename": "topdown-soldier-stand.png",
+    "kind": "image",
+    "collection": "Sprites 2D",
+    "description": "Fichier graphique original issu d'un pack Kenney CC0, conservé au format natif.",
+    "tags": [
+      "Kenney",
+      "CC0",
+      "2D",
+      "Sprites 2D"
+    ],
+    "size": 1274,
+    "url": "./assets/kenney/topdown-soldier-stand.png",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "sourceUrl": "https://kenney.nl/assets/topdown-shooter",
+    "animations": [],
+    "addedAt": "2026-11-07T03:30:00Z"
+  },
+  {
+    "id": "builtin-kenney-topdown-soldier-machine-png",
+    "name": "Soldat 2D · arme automatique",
+    "filename": "topdown-soldier-machine.png",
+    "kind": "image",
+    "collection": "Sprites 2D",
+    "description": "Fichier graphique original issu d'un pack Kenney CC0, conservé au format natif.",
+    "tags": [
+      "Kenney",
+      "CC0",
+      "2D",
+      "Sprites 2D"
+    ],
+    "size": 1529,
+    "url": "./assets/kenney/topdown-soldier-machine.png",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "sourceUrl": "https://kenney.nl/assets/topdown-shooter",
+    "animations": [],
+    "addedAt": "2026-11-07T03:30:00Z"
+  },
+  {
+    "id": "builtin-kenney-pixel-police-png",
+    "name": "Voiture de police · pixel art",
+    "filename": "pixel-police.png",
+    "kind": "image",
+    "collection": "Sprites 2D",
+    "description": "Fichier graphique original issu d'un pack Kenney CC0, conservé au format natif.",
+    "tags": [
+      "Kenney",
+      "CC0",
+      "2D",
+      "Sprites 2D"
+    ],
+    "size": 249,
+    "url": "./assets/kenney/pixel-police.png",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "sourceUrl": "https://kenney.nl/assets/pixel-vehicle-pack",
+    "animations": [],
+    "addedAt": "2026-11-07T03:30:00Z"
+  },
+  {
+    "id": "builtin-kenney-pixel-buggy-png",
+    "name": "Buggy · pixel art",
+    "filename": "pixel-buggy.png",
+    "kind": "image",
+    "collection": "Sprites 2D",
+    "description": "Fichier graphique original issu d'un pack Kenney CC0, conservé au format natif.",
+    "tags": [
+      "Kenney",
+      "CC0",
+      "2D",
+      "Sprites 2D"
+    ],
+    "size": 233,
+    "url": "./assets/kenney/pixel-buggy.png",
+    "author": "Kenney",
+    "license": "CC0-1.0",
+    "sourceUrl": "https://kenney.nl/assets/pixel-vehicle-pack",
+    "animations": [],
+    "addedAt": "2026-11-07T03:30:00Z"
   }
 ]
