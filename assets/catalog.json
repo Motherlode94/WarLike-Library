@@ -542,5 +542,239 @@
     "author": "WarLike",
     "license": "MIT",
     "addedAt": "2026-11-07T00:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-knight",
+    "name": "Chevalier sentinelle",
+    "filename": "warlike-knight.svg",
+    "kind": "image",
+    "collection": "Personnages",
+    "description": "Personnage 2D avec armure, cape et bouclier",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Personnages"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-knight.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-rogue",
+    "name": "Éclaireuse des ombres",
+    "filename": "warlike-rogue.svg",
+    "kind": "image",
+    "collection": "Personnages",
+    "description": "Personnage 2D à capuche et deux dagues",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Personnages"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-rogue.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-robot",
+    "name": "Drone de surveillance",
+    "filename": "warlike-robot.svg",
+    "kind": "image",
+    "collection": "Ennemis",
+    "description": "Drone 2D mécanique avec optique centrale",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Ennemis"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-robot.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-medic",
+    "name": "Trousse médicale",
+    "filename": "warlike-medic.svg",
+    "kind": "image",
+    "collection": "Objets",
+    "description": "Objet 2D médical avec symbole de soin",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Objets"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-medic.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-fantasy-house",
+    "name": "Maison médiévale",
+    "filename": "warlike-fantasy-house.svg",
+    "kind": "image",
+    "collection": "Bâtiments",
+    "description": "Maison 2D de village, fenêtres et toit",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Bâtiments"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-fantasy-house.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-pine",
+    "name": "Sapin stylisé",
+    "filename": "warlike-pine.svg",
+    "kind": "image",
+    "collection": "Nature",
+    "description": "Arbre 2D pour terrain forestier",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Nature"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-pine.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-turret-icon",
+    "name": "Tourelle défensive",
+    "filename": "warlike-turret-icon.svg",
+    "kind": "image",
+    "collection": "Armes",
+    "description": "Tourelle 2D pour jeu tactique",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Armes"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-turret-icon.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-cyber-panel",
+    "name": "Panneau HUD cyber",
+    "filename": "warlike-cyber-panel.svg",
+    "kind": "image",
+    "collection": "Interfaces",
+    "description": "UI 2D futuriste avec indicateurs d'état",
+    "tags": [
+      "WarLike Original",
+      "Sprite 2D",
+      "Interfaces"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-cyber-panel.svg",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-pine-3d",
+    "name": "Sapin polygonal 3D",
+    "filename": "warlike-pine-3d.gltf",
+    "kind": "model",
+    "collection": "Nature",
+    "description": "Sapin tridimensionnel à trois étages feuillus",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Nature"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-pine-3d.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-watchtower-3d",
+    "name": "Tour de guet 3D",
+    "filename": "warlike-watchtower-3d.gltf",
+    "kind": "model",
+    "collection": "Bâtiments",
+    "description": "Tour de guet avec plateforme, toit et quatre supports",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Bâtiments"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-watchtower-3d.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-lamp-3d",
+    "name": "Lampadaire urbain 3D",
+    "filename": "warlike-lamp-3d.gltf",
+    "kind": "model",
+    "collection": "Objets",
+    "description": "Lampadaire avec poteau, bras et abat-jour",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Objets"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-lamp-3d.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-scifi-beacon-3d",
+    "name": "Balise scientifique 3D",
+    "filename": "warlike-scifi-beacon-3d.gltf",
+    "kind": "model",
+    "collection": "Science-fiction",
+    "description": "Balise futuriste avec noyau lumineux et ailettes",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Science-fiction"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-scifi-beacon-3d.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
+  },
+  {
+    "id": "builtin-community-warlike-medieval-well-3d",
+    "name": "Puits de village 3D",
+    "filename": "warlike-medieval-well-3d.gltf",
+    "kind": "model",
+    "collection": "Bâtiments",
+    "description": "Puits circulaire maçonné avec toit sur montants",
+    "tags": [
+      "WarLike Original",
+      "Modèle 3D",
+      "Bâtiments"
+    ],
+    "size": 0,
+    "url": "./assets/community/warlike-medieval-well-3d.gltf",
+    "author": "WarLike",
+    "license": "MIT",
+    "addedAt": "2026-11-07T18:00:00Z"
   }
 ]
