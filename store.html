@@ -22,7 +22,7 @@ const $=id=>document.getElementById(id);let items=[];
 const key='warlike-library-store-favorites-v1';
 let favorites=new Set();
 try{const stored=JSON.parse(localStorage.getItem(key)||'[]');if(Array.isArray(stored))favorites=new Set(stored.filter(id=>typeof id==='string').slice(0,2000));}catch{}
-const safePath=path=>typeof path==='string'&&/^[.]\/assets\/(?:(?:community|kenney)\/)?[a-z0-9_.-]+\.(glb|gltf|svg|png|jpg|jpeg|webp|ogg|wav|js|wls|ts|cs)$/i.test(path)?path:null;
+const safePath=path=>typeof path==='string'&&/^[.]\/assets\/(?:(?:community\/|kenney\/(?:thumbs\/)?)?)[a-z0-9_.-]+\.(glb|gltf|svg|png|jpg|jpeg|webp|ogg|wav|js|wls|ts|cs)$/i.test(path)?path:null;
 function toggleFavorite(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);try{localStorage.setItem(key,JSON.stringify([...favorites]));}catch{}render();}
 function updateCollections(){const selected=$('collectionFilter').value;const names=[...new Set(items.map(a=>a.collection).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));$('collectionFilter').replaceChildren(new Option('Toutes les collections','all'),...names.map(name=>new Option(name,name)));$('collectionFilter').value=names.includes(selected)?selected:'all';}
 function render(){
