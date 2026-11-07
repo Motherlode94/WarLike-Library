@@ -27,7 +27,7 @@ const validateComponent=(name,value)=>{
   const assigned=Object.values(v.parts).filter(Boolean);if(new Set(assigned).size!==assigned.length)throw Error('Une pièce du GLB ne peut être assignée à plusieurs articulations.');
  }
  if(name==='scripts'){
-  if(typeof v.enabled!=='boolean'||!Array.isArray(v.entries)||v.entries.length>16||v.entries.some(x=>typeof x!=='string'||!/^[-\\w./]+\\.(wls|js|ts|cs)$/.test(x)||x.includes('..')||x.length>160))throw Error('Références de scripts invalides.');
+  if(typeof v.enabled!=='boolean'||!Array.isArray(v.entries)||v.entries.length>16||v.entries.some(x=>typeof x!=='string'||!/^[-\w./]+\.(wls|js|ts|cs)$/.test(x)||x.includes('..')||x.length>160))throw Error('Références de scripts invalides.');
  }
  if(name==='rigidbody'&&(typeof v.enabled!=='boolean'||typeof v.useGravity!=='boolean'||!finite(v.mass,.001,100000)))throw Error('Rigidbody invalide.');
  return v;
