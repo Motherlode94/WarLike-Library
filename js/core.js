@@ -1,6 +1,42 @@
 export const kinds={all:'Tout',model:'Modèles 3D',image:'Images & sprites',animation:'Animations',audio:'Audio',video:'Vidéo',script:'Scripts',document:'Documents'};
 export const languages={wls:'WarScript',js:'JavaScript',ts:'TypeScript',cs:'C#'};
 export const MAX_FILE=32*1024*1024;
+export const usageLabels={
+ all:'Tous les usages',
+ characters:'Personnages & PNJ',
+ vehicles:'Véhicules & transport',
+ weapons:'Armes & équipement',
+ buildings:'Bâtiments & intérieurs',
+ world:'Décors & nature',
+ animations:'Animations & rigs',
+ materials:'Matériaux & textures',
+ props:'Objets & accessoires',
+ sprites:'Sprites 2D & UI',
+ audio:'Musique & sons',
+ scripts:'Scripts & gameplay',
+ video:'Vidéo & VFX',
+ documents:'Documents & autres'
+};
+export function utilityForAsset(asset){
+ if(asset.kind==='script')return 'scripts';
+ if(asset.kind==='audio')return 'audio';
+ if(asset.kind==='video')return 'video';
+ if(asset.kind==='document')return 'documents';
+ const words=[asset.name,asset.filename,asset.collection,asset.description,...(asset.tags||[])].filter(v=>typeof v==='string').join(' ').toLowerCase();
+ if(asset.kind==='image'){
+  return /material|texture|normal map|roughness|albedo|pbr|diffuse/.test(words)?'materials':'sprites';
+ }
+ if(asset.kind!=='model')return 'documents';
+ if(/soldier|character|person|human|humanoid|civilian|npc|enemy|monster|zombie|animal|villager|knight|robot|creature|citizen/.test(words))return 'characters';
+ if(/vehicle|car |truck|tank|jeep|motorcycle|aircraft|boat|ship|spaceship|buggy|race|train|wheel|transport/.test(words))return 'vehicles';
+ if(/weapon|gun|rifle|pistol|sword|axe|blaster|turret|shield|armor|armour|fusil|arme|pistolet|épée/.test(words))return 'weapons';
+ if(/building|house|castle|city|town|interior|room|furniture|architecture|factory|bâtiment|maison|porte|window/.test(words))return 'buildings';
+ if(/nature|tree|plant|grass|forest|rock|terrain|landscape|mountain|environment|graveyard|snow|water|river|road|tile/.test(words))return 'world';
+ if((asset.animations?.length||0)>0||/animation|rigg|skeleton/.test(words))return 'animations';
+ if(/material|texture|pbr/.test(words))return 'materials';
+ return 'props';
+}
+
 // Saved metadata may customize a built-in item, but cannot replace its current file.
 // In particular, a restored backup must not bring back a removed catalog asset.
 export function mergeLibrary(catalog,saved){
