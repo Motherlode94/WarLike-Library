@@ -16,3 +16,15 @@ test('catalog updates preserve personal edits and files without reviving obsolet
  const result=mergeLibrary([current],[old,{id:'builtin-removed',name:'Antique soldier'},own]);
  assert.equal(result.length,2);assert.equal(result[0].name,'My soldier');assert.equal(result[0].favorite,true);assert.equal(result[0].url,current.url);assert.equal(result[0].thumbnail,current.thumbnail);assert.deepEqual(result[0].animations,['Walk']);assert.equal(result[1],own);
 });
+
+test('restoring an embedded glTF backup uses JSON glTF validation rather than GLB binary parsing',async()=>{
+ const source=readFileSync(new URL('../assets/community/vehicle-scout-buggy.gltf',import.meta.url));
+ const data={schema:'warlike.library.v1',resources:[{id:'import-gltf-restore',name:'Buggy imported',filename:'buggy.gltf',collection:'Mes imports',data:source.toString('base64')}]};
+ const [asset]=validateBackup(data,catalog);
+ assert.equal(asset.kind,'model');
+ assert.ok(asset.meshes>0);
+ assert.equal(asset.size,source.length);
+ assert.equal(await asset.blob.text(),source.toString('utf8'));
+ const invalid={...data,resources:[{...data.resources[0],data:btoa('{"asset":{"version":"1.0"}}')}]};
+ assert.throws(()=>validateBackup(invalid,catalog),/glTF 2.0 invalide/);
+});
