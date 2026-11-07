@@ -106,3 +106,11 @@ Le fichier `assets/packs.json` référence cinq regroupements de ressources effe
 Le bouton **Aperçu 3D** ouvre le modèle sélectionné dans `model-viewer` ; la scène peut être pivotée et zoomée. Lorsque le GLB contient des animations, l'interface propose leur lecture. Le lecteur chargé depuis Google nécessite Internet/WebGL ; en cas d'échec, le téléchargement du fichier reste disponible. Le Store affiche aussi la présence déclarée d'animations sans inventer de rig pour les modèles statiques.
 
 **Correction de sauvegarde :** `validateBackup` rétablit désormais les fichiers `.gltf` JSON avec leur validateur dédié au lieu de les envoyer au parseur binaire GLB. Les tests couvrent les sauvegardes glTF et les références des packs, ainsi que la syntaxe du script intégré au Store. L'installation directe dans WarLike Engine reste à concevoir et à valider séparément.
+
+## Inspection 2D et 3D renforcée
+
+Le Store propose désormais un bouton **Aperçu 2D** sur les fichiers image : visualisation du fichier original, dimensions réelles en pixels, zoom de 25 à 800 %, fond damier pour distinguer la transparence et rendu « Pixel net » (sans interpolation) commutable. Cela ne transforme pas une image statique en spritesheet animé.
+
+Dans l'**Aperçu 3D**, `js/asset-inspection.js` analyse les fichiers GLB et glTF embarqués et expose les informations vérifiables de leurs scènes : nombre de maillages, primitives, sommets, triangles estimés selon les modes de primitives, matériaux, textures, skins et clips d'animation. Les animations disponibles sont lues dans le viewer lorsque le modèle les fournit. La présence d'un skin ne garantit pas à elle seule un personnage prêt à être joué : l'Animator et les comportements Engine doivent encore être configurés.
+
+Les fonctionnalités d'aperçu opèrent sur les assets existants et **n'ajoutent pas de faux personnages ni de modèles externes**. L'inspection client ne rend pas un modèle photoréaliste ou prêt pour la physique du moteur.
