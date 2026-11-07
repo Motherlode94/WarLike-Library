@@ -4,6 +4,8 @@ body{background:#191c20;color:#f2f4f0}main.library-store{max-width:1360px;margin
 </style></head><body><main class="library-store"><header class="store-top"><div class="store-logo">WARLIKE <span>LIBRARY</span> / Asset Store</div><nav class="store-nav" style="margin:0"><a class="secondary" href="./">← Ma bibliothèque</a><a class="secondary" href="https://warlike-engine.pages.dev/" target="_blank" rel="noopener noreferrer">WarLike Engine</a></nav></header>
 <section class="store-hero"><div class="eyebrow">WarLike Library · ressources gratuites et créations</div><h1>Des assets réels, classés pour tes projets.</h1><p>Retrouve les ressources incluses dans WarLike Library et accède aux catalogues spécialisés de WarLike Engine. Chaque ressource conserve son auteur et sa licence ; aucune fiche payante Unity n’est copiée.</p><div class="store-nav"><a href="#departments">Explorer les départements</a><a class="secondary" href="#library-assets">Voir les ressources locales</a></div></section>
 <section class="store-section" id="departments"><h2>Départements WarLike</h2><p class="subtitle">Les catégories spécialisées ouvrent le catalogue du moteur sur un autre domaine. Leurs ressources ne sont pas automatiquement transférées dans Library.</p><div class="departments">
+<article class="dept"><div class="glyph">🚙</div><h3>Véhicules 3D</h3><p>Buggy, transport blindé et modèles militaires. Fichiers réels téléchargeables.</p><a href="#library-assets" data-collection="Véhicules">Explorer les véhicules ↓</a></article>
+<article class="dept"><div class="glyph">♟</div><h3>Personnages 3D</h3><p>Personnages low-poly et modèles animés existants. Les nouveaux modèles statiques ne possèdent pas de rig.</p><a href="#library-assets" data-collection="Personnages">Explorer les personnages ↓</a></article>
 <article class="dept"><div class="glyph">⚔</div><h3>Armes 3D</h3><p>Modèles GLB d’armes et accessoires avec source et licence.</p><a href="https://warlike-engine.pages.dev/asset-store/3d-departments.html?section=armes" target="_blank" rel="noopener noreferrer">Explorer les armes ↗</a></article>
 <article class="dept"><div class="glyph">▥</div><h3>Maisons & bâtiments</h3><p>Modèles architecturaux 3D issus des packs Kenney et Quaternius.</p><a href="https://warlike-engine.pages.dev/asset-store/3d-departments.html?section=maisons" target="_blank" rel="noopener noreferrer">Explorer les bâtiments ↗</a></article>
 <article class="dept"><div class="glyph">◇</div><h3>Animations</h3><p>GLB contenant des clips d’animation réels.</p><a href="https://warlike-engine.pages.dev/asset-store/3d-departments.html?section=animations" target="_blank" rel="noopener noreferrer">Explorer les animations ↗</a></article>
@@ -47,6 +49,12 @@ function render(){
  }
 }
 ['assetSearch','typeFilter','sort','collectionFilter','favoritesOnly'].forEach(id=>$(id).addEventListener(id==='assetSearch'?'input':'change',render));
+document.querySelectorAll('[data-collection]').forEach(link=>link.addEventListener('click',()=>{
+  $('assetSearch').value='';$('typeFilter').value='all';$('favoritesOnly').checked=false;
+  const name=link.dataset.collection;
+  if([...$('collectionFilter').options].some(option=>option.value===name))$('collectionFilter').value=name;
+  render();
+}));
 try{
  const res=await fetch('./assets/catalog.json',{credentials:'same-origin'});if(!res.ok)throw Error('HTTP '+res.status);const catalog=await res.json();if(!Array.isArray(catalog))throw Error('Format du catalogue incorrect');
  items=catalog.filter(a=>a&&typeof a.id==='string'&&typeof a.name==='string'&&safePath(a.url));
