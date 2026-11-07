@@ -30,3 +30,10 @@ test('inline asset store JavaScript compiles before Cloudflare deployment',()=>{
  assert.ok(html.includes('id="assetViewer"'));
  assert.ok(html.includes('previewModel(a)'));
 });
+
+test('store card renderer declares heading locally before its first use',()=>{
+ const html=readFileSync(new URL('store.html',root),'utf8');
+ assert.ok(html.includes("const heading=document.createElement('h3');heading.textContent=a.name;"));
+ assert.ok(!html.includes("info.className='asset-info',heading="));
+ assert.ok(html.includes('info.append(heading,meta,desc,byline,actions)'));
+});
