@@ -2,13 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const catalog=JSON.parse(readFileSync(new URL('../assets/catalog.json',import.meta.url),'utf8'));
-const verified=a=>['Kenney','Quaternius'].includes(a.author)&&a.license==='CC0-1.0'&&a.sourceUrl?.startsWith('https://')&&((a.kind==='model'&&a.filename?.endsWith('.glb'))||(a.kind==='image'&&/\\.(png|webp)$/i.test(a.filename||'')));
+const verified=a=>['Kenney','Quaternius'].includes(a.author)&&a.license==='CC0-1.0'&&a.sourceUrl?.startsWith('https://')&&((a.kind==='model'&&a.filename?.endsWith('.glb'))||(a.kind==='image'&&/\.(png|webp)$/i.test(a.filename||'')));
 test('authentic 2D and 3D pack resources have real bundled files and provenance',()=>{
  const group=catalog.filter(verified);
  assert.ok(group.filter(a=>a.kind==='model').length>=10);
  assert.ok(group.filter(a=>a.kind==='image').length>=6);
  for(const a of group){
-   assert.match(a.url,/^[.]\\/assets\\/[a-z0-9_./-]+$/i);
+   assert.match(a.url,/^[.]\/assets\/[a-z0-9_./-]+$/i);
    const file=readFileSync(new URL('../'+a.url,import.meta.url));
    assert.equal(file.length,a.size,a.filename+' size mismatch');
    if(a.kind==='model'){
