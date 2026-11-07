@@ -54,8 +54,17 @@ La syntaxe du script de cette nouvelle page a été vérifiée ; navigation, fic
 
 ## Pack Game Assets — ressources supplémentaires pour créer des jeux
 
-La bibliothèque contient désormais **68 ressources intégrées**, dont **18 nouvelles ressources** ajoutées dans cette livraison : **12 sprites vectoriels 2D SVG** et **6 modèles 3D glTF 2.0 autonomes**. Les catégories couvertes comprennent **RPG, FPS/TPS, RTS, simulation, horreur, sport et plateforme 2D**. Exemples : mage, squelette, médecin tactique, boîte de munitions, centre de commandement, minerais, comptoir, tracteur, clé, œil spectral, ballon, cristal ; puis caisse militaire, radar, étal de marché, autel, coffre et but de football en 3D.
+La bibliothèque contient désormais **70 ressources intégrées**, dont **18 ressources du pack Game Assets** : **12 sprites vectoriels 2D SVG** et **6 modèles 3D glTF 2.0 autonomes**. Les catégories couvertes comprennent **RPG, FPS/TPS, RTS, simulation, horreur, sport et plateforme 2D**. Exemples : mage, squelette, médecin tactique, boîte de munitions, centre de commandement, minerais, comptoir, tracteur, clé, œil spectral, ballon, cristal ; puis caisse militaire, radar, étal de marché, autel, coffre et but de football en 3D.
 
 Tous ces fichiers sont **présents dans `assets/community/`** et catalogués dans `assets/catalog.json` avec leur auteur WarLike, licence MIT, catégorie et taille réelle tirée des métadonnées GitHub. Les SVG sont des dessins originaux exploitables comme illustrations/sprites statiques ; ils n'ont pas de rig ni de frames d'animation. Les glTF sont des modèles *low-poly* originaux avec géométrie et buffers embarqués, sans mouvements/IA/physique prédéfinis. Ils sont autonomes mais ne constituent pas des prefabs 3D directement jouables. Les imports et aperçus SVG/glTF sont gérés par la Library, sous réserve de prise en charge WebGL pour les aperçus 3D.
 
 Le test `tests/game-assets-library.test.mjs` contrôle le catalogue, les chemins locaux, la présence des fichiers et la structure des ressources. Pour consulter les fichiers : `store.html` ou l'interface principale Library.
+
+## Extension guerre moderne — véhicules et structures 3D
+
+Deux modèles glTF 2.0 autonomes originaux sont ajoutés à `assets/community/` et indexés dans le catalogue :
+
+- `modern-tactical-4x4.gltf` : véhicule tactique low-poly avec 4 roues, cabine, vitrage, carrosserie et tourelle décorative (984 triangles).
+- `modern-checkpoint.gltf` : poste de contrôle fortifié low-poly, poste d’observation, couverture, murs et mobilier (464 triangles).
+
+Ces modèles ont une géométrie 3D réelle (positions de sommets finies et buffers intégrés), mais **ne sont pas des assets photoréalistes ni des prefabs jouables complets**. Les systèmes de conduite, de visée, de collisions, d’animation et d’IA restent à configurer dans WarLike Engine. Les deux maillages sont des créations WarLike sous licence MIT, distinctes des assets Quaternius CC0 du même rayon. Le test `tests/modern-warfare-assets.test.mjs` valide leurs données géométriques embarquées, leurs dimensions et leurs métadonnées.
