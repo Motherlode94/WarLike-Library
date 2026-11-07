@@ -7,7 +7,9 @@ const componentDefaults={
  renderer:{visible:true,castShadow:true},
  collider:{enabled:false,shape:'box',isTrigger:false},
  animator:{enabled:false,defaultClip:''},
- rigidbody:{enabled:false,mass:1,useGravity:true}
+ rigidbody:{enabled:false,mass:1,useGravity:true},
+ vehicle:{enabled:false,drive:'wheels',maxSpeed:22,steeringAngle:30,parts:{wheelFL:'',wheelFR:'',wheelRL:'',wheelRR:'',doorL:'',doorR:'',turret:'',barrel:''}},
+ scripts:{enabled:false,entries:[]}
 };
 export const supportedComponents=Object.keys(componentDefaults);
 const validateComponent=(name,value)=>{
@@ -18,6 +20,15 @@ const validateComponent=(name,value)=>{
  if(name==='renderer'&&!['visible','castShadow'].every(k=>typeof v[k]==='boolean'))throw Error('Renderer invalide.');
  if(name==='collider'&&(typeof v.enabled!=='boolean'||typeof v.isTrigger!=='boolean'||!['box','sphere','capsule'].includes(v.shape)))throw Error('Collider invalide.');
  if(name==='animator'&&(typeof v.enabled!=='boolean'||typeof v.defaultClip!=='string'||v.defaultClip.length>160))throw Error('Animator invalide.');
+ if(name==='vehicle'){
+  const keys=['wheelFL','wheelFR','wheelRL','wheelRR','doorL','doorR','turret','barrel'];
+  if(typeof v.enabled!=='boolean'||!['wheels','tracks','static'].includes(v.drive)||!finite(v.maxSpeed,0,150)||!finite(v.steeringAngle,0,90)||!v.parts||typeof v.parts!=='object'||Array.isArray(v.parts)||Object.keys(v.parts).some(k=>!keys.includes(k))||Object.values(v.parts).some(x=>typeof x!=='string'||x.length>160))throw Error('Configuration véhicule invalide.');
+  v.parts={...componentDefaults.vehicle.parts,...v.parts};
+  const assigned=Object.values(v.parts).filter(Boolean);if(new Set(assigned).size!==assigned.length)throw Error('Une pièce du GLB ne peut être assignée à plusieurs articulations.');
+ }
+ if(name==='scripts'){
+  if(typeof v.enabled!=='boolean'||!Array.isArray(v.entries)||v.entries.length>16||v.entries.some(x=>typeof x!=='string'||!/^[-\\w./]+\\.(wls|js|ts|cs)$/.test(x)||x.includes('..')||x.length>160))throw Error('Références de scripts invalides.');
+ }
  if(name==='rigidbody'&&(typeof v.enabled!=='boolean'||typeof v.useGravity!=='boolean'||!finite(v.mass,.001,100000)))throw Error('Rigidbody invalide.');
  return v;
 };
@@ -30,6 +41,7 @@ export function validatePrefab(item){
  if(item?.schema!=='warlike.prefab.v1'||!cleanText(item.id,160)||!cleanText(item.name,160)||!cleanText(item.assetId,160)||!['2d','3d'].includes(item.mode)||item.parentId!=null&&!cleanText(item.parentId,160)||item.id===item.parentId)throw Error('Définition prefab invalide.');
  if(!item.components||typeof item.components!=='object'||Array.isArray(item.components)||Object.keys(item.components).length>supportedComponents.length)throw Error('Composants invalides.');
  const components={};for(const [name,v] of Object.entries(item.components))components[name]=validateComponent(name,v);
+ if(item.mode==='2d'&&components.vehicle?.enabled)throw Error('Composant véhicule 3D requis.');
  return {...item,components};
 }
 export function resolvePrefab(id,library,visited=new Set()){
@@ -56,5 +68,5 @@ export function readPrefabs(storage=globalThis.localStorage){
 export function exportPrefabPackage(id,prefabs,asset){
  const item=resolvePrefab(id,prefabs);
  if(!asset||asset.id!==item.assetId||asset.kind!==(item.mode==='2d'?'image':'model'))throw Error('Fichier source de prefab absent.');
- return {schema:'warlike.library.transfer.v1',version:1,prefab:item,asset:{id:asset.id,name:asset.name,kind:asset.kind,filename:asset.filename,license:asset.license||'Non précisée',sourceUrl:asset.sourceUrl||null,url:asset.url||null},requirements:['WarLike Engine import of model/sprite and components'],note:'Manifeste transportable. Les fichiers binaires ne sont pas intégrés et Engine doit résoudre/importer l’asset source avant instanciation.'};
+ return {schema:'warlike.library.transfer.v1',version:1,prefab:item,asset:{id:asset.id,name:asset.name,kind:asset.kind,filename:asset.filename,license:asset.license||'Non précisée',sourceUrl:asset.sourceUrl||null,url:asset.url||null},requirements:['WarLike Engine import of model/sprite and components','Les pièces articulées doivent correspondre aux nœuds réels du modèle; scripts référencés non embarqués'],note:'Manifeste transportable. Les fichiers binaires ne sont pas intégrés et Engine doit résoudre/importer l’asset source avant instanciation.'};
 }
