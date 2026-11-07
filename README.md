@@ -41,3 +41,13 @@ IndexedDB est propre à l’origine et au profil du navigateur : exporter une sa
 ## Licences
 
 Code de l’application et scripts WarLike : MIT (voir LICENSE). Assets Kenney/Quaternius : CC0-1.0 ; auteurs et sources exactes dans assets/catalog.json. Notices conservées dans assets/KENNEY-LICENSE.md et assets/QUATERNIUS-LICENSE.md. Google model-viewer est un composant tiers Apache-2.0 chargé depuis https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js.
+
+## WarLike Asset Store — point d'entrée de la bibliothèque
+
+[Explorer les départements](./store.html) depuis le bouton **Asset Store** de l'interface principale.
+
+Cette page donne accès aux rayons spécialisés de WarLike Engine : **Armes**, **Maisons & bâtiments**, **Animations**, **Matériaux & textures**, **Prefabs 3D**, **Sprites/Prefabs 2D**, et **Audio/UI**. Elle présente séparément les **23 ressources réellement incluses** dans le dépôt WarLike-Library depuis `assets/catalog.json` (recherche, filtrage, provenance, licences et téléchargement des fichiers), sans en inventer de nouvelles.
+
+**Frontière fonctionnelle :** les ressources des rayons Engine sont hébergées sur `warlike-engine.pages.dev`. Library ne les réhéberge pas et n'annonce aucun import inter-domaines ou synchronisation : le navigateur isole les bases IndexedDB de ces deux origines. Une éventuelle fédération et une installation Engine ↔ Library devront utiliser un protocole d'import/export explicite ou une API contrôlée.
+
+La syntaxe du script de cette nouvelle page a été vérifiée ; navigation, fichiers téléchargeables et publication Cloudflare nécessitent encore une validation en navigateur.
