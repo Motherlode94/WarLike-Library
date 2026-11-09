@@ -8,3 +8,9 @@
   Cache-Control: no-cache
 /styles.css
   Cache-Control: no-cache
+
+# Public metadata only: allow WarLike Store to list built-in Library resources.
+/assets/catalog.json
+  Access-Control-Allow-Origin: https://warlike-asset-stores.pages.dev
+  Vary: Origin
+  Cache-Control: public, max-age=300
