@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check js/app.js && node --check js/core.js && node --check js/storage.js && node --check js/asset-inspection.js && node --check js/import-validation.js && node --check js/prefab-studio.js",
+    "check": "node --check js/app.js && node --check js/core.js && node --check js/storage.js && node --check js/asset-inspection.js && node --check js/import-validation.js && node --check js/prefab-studio.js && node --check iron-defiance-import.js",
     "start": "python3 -m http.server 8000"
   },
   "engines": {
