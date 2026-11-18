@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="./css/prefab-studio-workspace.css?v=1">
 <link rel="stylesheet" href="./design-system/warlike-foundation.css?v=1.1">
 <link rel="stylesheet" href="./design-system/warlike-shell.css?v=1.1">
-</head><body><main><header><div><small>WARLIKE LIBRARY / PREFABS</small><h1>Prefab Studio</h1></div><nav><a href="https://warlike-hub.pages.dev/guide.html#transferts" target="_blank" rel="noopener">Guide commun</a> · <a href="./">Bibliothèque</a> · <a href="./store.html">Asset Store</a> · <a href="./pack-builder.html">Pack Builder (2D/3D/scripts)</a> · <a href="https://warlike-engine.pages.dev/" target="_blank" rel="noopener">WarLike Engine</a></nav></header>
+<link rel="stylesheet" href="./design-system/warlike-palette-v2.css?v=2"></head><body><main><header><div><small>WARLIKE LIBRARY / PREFABS</small><h1>Prefab Studio</h1></div><nav><a href="https://warlike-hub.pages.dev/guide.html#transferts" target="_blank" rel="noopener">Guide commun</a> · <a href="./">Bibliothèque</a> · <a href="./store.html">Asset Store</a> · <a href="./pack-builder.html">Pack Builder (2D/3D/scripts)</a> · <a href="https://warlike-engine.pages.dev/" target="_blank" rel="noopener">WarLike Engine</a></nav></header>
 <p>Crée des configurations de composants 2D/3D à partir des fichiers présents. Les variantes héritent du prefab parent. La sauvegarde est locale à ce navigateur. Les champs véhicule lient des noms de nœuds existants ; ils ne créent pas de géométrie ni d'articulation.</p><p><a href="https://warlike-engine.pages.dev/asset-store/library-import.html" target="_blank" rel="noopener">↗ Importer un pack 3D dans WarLike Engine</a> — après téléchargement du fichier <code>.wlpkg.json</code>.</p>
 <div class="prefab-workspace">
 <aside class="panel prefab-library" aria-labelledby="libraryTitle">
@@ -178,4 +178,4 @@ $('directInstall').onclick=async()=>{
 };
 
 try{assets=(await libraryAssets()).filter(a=>['image','model'].includes(a.kind));$('source').replaceChildren(...assets.map(a=>new Option((a.kind==='model'?'3D · ':'2D · ')+a.name,a.id)));ui();const requested=new URLSearchParams(location.search).get('asset');if(requested&&assets.some(a=>a.id===requested))$('source').value=requested;refresh();const wantedPrefab=new URLSearchParams(location.search).get('prefab');if(wantedPrefab&&readPrefabs().some(p=>p.id===wantedPrefab)){$('existing').value=wantedPrefab;$('existing').onchange();}else{$('name').value=assets.find(a=>a.id===$('source').value)?.name||'';display();notice(assets.length+' modèles et images disponibles.')}}catch(e){notice('Chargement impossible : '+e.message,true)}
-</script></main></body></html>
+</script></main><script type="module" src="./design-system/warlike-theme-switcher-v2.js?v=2"></script></body></html>
