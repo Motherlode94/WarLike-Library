@@ -1,0 +1,51 @@
+/* WarLike Library: brand lockup, matching the Store's readable olive identity.
+   Keep the mark, title and tagline in separate, non-overlapping cells. */
+html[data-warlike-app="warlike-library"] .sidebar .brand{
+ display:grid;grid-template-columns:42px minmax(0,1fr);align-items:center;
+ gap:10px;width:100%;min-width:0;max-width:100%;margin:0;
+ text-decoration:none;font-family:Manrope,system-ui,sans-serif;
+ line-height:1.12;
+}
+html[data-warlike-app="warlike-library"] .sidebar .brand .logo{
+ display:grid;place-items:center;position:relative;
+ flex:none;box-sizing:border-box;width:42px;height:44px;min-width:42px;
+ border:1px solid var(--wl-border,#5b6c4a);border-radius:10px;
+ background:var(--wl-surface-raised,#263026);color:var(--wl-fg,#F5F3E8);
+ font-size:22px;font-weight:750;line-height:1;
+}
+html[data-warlike-app="warlike-library"] .sidebar .brand .logo span{
+ position:absolute;right:-4px;top:-6px;
+ width:15px;height:15px;display:grid;place-items:center;
+ border:1px solid var(--wl-border,#5b6c4a);border-radius:50%;
+ font-size:10px;line-height:1;
+ background:var(--wl-sidebar,#192119);color:var(--wl-accent,#D9D28B);
+}
+html[data-warlike-app="warlike-library"] .sidebar .brand-copy{
+ display:flex;flex-direction:column;min-width:0;align-items:flex-start;gap:2px;
+}
+html[data-warlike-app="warlike-library"] .sidebar .brand-title{
+ display:block;min-width:0;font-size:17px;font-weight:800;
+ line-height:1.16;letter-spacing:-.035em;white-space:normal;
+ overflow-wrap:normal;word-break:normal;color:var(--wl-fg,#F5F3E8);
+}
+html[data-warlike-app="warlike-library"] .sidebar .brand-title b{
+ display:block;font:inherit;color:var(--wl-accent,#D9D28B);
+}
+html[data-warlike-app="warlike-library"] .sidebar .brand-tagline{
+ display:block;max-width:100%;font-size:7px;line-height:1.45;
+ letter-spacing:.045em;white-space:normal;overflow-wrap:normal;
+ color:var(--wl-fg-muted,#BDC5B5);font-weight:600;
+}
+@media(max-width:1150px) and (min-width:851px){
+ html[data-warlike-app="warlike-library"] .sidebar .brand{grid-template-columns:38px minmax(0,1fr);gap:8px}
+ html[data-warlike-app="warlike-library"] .sidebar .brand .logo{width:38px;min-width:38px;height:40px}
+ html[data-warlike-app="warlike-library"] .sidebar .brand-title{font-size:15px}
+ html[data-warlike-app="warlike-library"] .sidebar .brand-tagline{font-size:6.5px}
+}
+@media(max-width:850px){
+ html[data-warlike-app="warlike-library"] .sidebar .brand{
+  width:auto;max-width:calc(100% - 130px);margin-right:auto;
+ }
+ html[data-warlike-app="warlike-library"] .sidebar .brand-tagline{display:none}
+ html[data-warlike-app="warlike-library"] .sidebar .brand-title b{display:inline}
+}
