@@ -1,0 +1,18 @@
+/* Library olive layout follow-up: scroll complete collections without clipping. */
+html[data-warlike-app="warlike-library"],html[data-warlike-app="warlike-library"] body{min-height:100%;max-width:100%}
+html[data-warlike-app="warlike-library"] body{overflow-x:clip}
+html[data-warlike-app="warlike-library"] .sidebar{box-sizing:border-box;height:100vh;height:100dvh;max-height:100dvh;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;scrollbar-width:thin;scrollbar-color:var(--wl-border) var(--wl-sidebar)}
+html[data-warlike-app="warlike-library"] .sidebar .brand{flex-shrink:0;min-width:0}
+html[data-warlike-app="warlike-library"] .sidebar #navigation,html[data-warlike-app="warlike-library"] .sidebar #collections{flex-shrink:0;min-height:min-content}
+html[data-warlike-app="warlike-library"] .sidebar .side-bottom{flex-shrink:0;margin-top:auto;padding-bottom:22px}
+html[data-warlike-app="warlike-library"] .workspace{min-width:0;max-width:100%}
+html[data-warlike-app="warlike-library"] .topbar{max-width:100%;min-width:0}
+html[data-warlike-app="warlike-library"] .asset-grid{min-width:0}
+html[data-warlike-app="warlike-library"] .asset-card{min-width:0;overflow:hidden}
+html[data-warlike-app="warlike-library"] .asset-visual img{max-width:100%;object-fit:contain}
+@media(max-width:850px){
+ html[data-warlike-app="warlike-library"] .sidebar{position:relative;height:auto;min-height:0;max-height:none;overflow:visible}
+ html[data-warlike-app="warlike-library"] .sidebar #navigation{min-width:0}
+ html[data-warlike-app="warlike-library"] .sidebar.expanded #collections{max-height:48vh;overflow-y:auto;overflow-x:hidden}
+ html[data-warlike-app="warlike-library"] .workspace{margin-left:0}
+}
