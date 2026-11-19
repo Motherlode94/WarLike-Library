@@ -1,0 +1,36 @@
+/* WarLike Library / Asset Store semantic theme parity.
+   All four variants inherit the same tokens as Store; no geometry or thumbnails altered. */
+html[data-warlike-app="warlike-library"][data-wl-theme]{
+ --bg:var(--wl-bg);--side:var(--wl-sidebar);--panel:var(--wl-surface);
+ --line:var(--wl-border);--text:var(--wl-fg);--muted:var(--wl-fg-muted);--accent:var(--wl-accent);
+}
+html[data-warlike-app="warlike-library"][data-wl-theme] body{background:var(--wl-bg);color:var(--wl-fg)}
+html[data-warlike-app="warlike-library"][data-wl-theme] :is(.sidebar,.topbar,.workspace,.feature-strip,.asset-card,.asset-visual,.search){
+ border-color:var(--wl-border);
+ color:var(--wl-fg);
+}
+html[data-warlike-app="warlike-library"][data-wl-theme] .sidebar{background:var(--wl-sidebar)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .topbar{background:var(--wl-sidebar)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .workspace{background:var(--wl-bg)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .asset-card{background:var(--wl-surface)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .asset-visual{background:var(--wl-surface-raised)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .feature-strip{background:linear-gradient(110deg,var(--wl-surface-raised),var(--wl-surface))}
+html[data-warlike-app="warlike-library"][data-wl-theme] :is(.brand,.brand b,.breadcrumb b,.feature-strip h2,.card-name,.content-heading h2,h1){color:var(--wl-fg)}
+html[data-warlike-app="warlike-library"][data-wl-theme] :is(.brand small,.nav-label,.collection-heading,.subtitle,.card-info,.feature-strip p,.breadcrumb,.side-bottom,.sidebar nav small,.asset-card .card-info span){color:var(--wl-fg-muted)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .logo{color:var(--wl-accent);border-color:var(--wl-border)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .logo span{background:var(--wl-sidebar);color:var(--wl-accent)}
+html[data-warlike-app="warlike-library"][data-wl-theme] :is(.search,input,select,textarea){background:var(--wl-input);color:var(--wl-fg);border-color:var(--wl-border)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .search input{background:transparent}
+html[data-warlike-app="warlike-library"][data-wl-theme] :is(button,.secondary,.view-controls button){background:var(--wl-surface-raised);color:var(--wl-fg);border-color:var(--wl-border)}
+html[data-warlike-app="warlike-library"][data-wl-theme] :is(button:hover,.secondary:hover,.view-controls button:hover){background:var(--wl-surface-hover);color:var(--wl-fg)}
+html[data-warlike-app="warlike-library"][data-wl-theme] :is(.primary,.feature-strip button,.chips button.active){background:var(--wl-accent);border-color:var(--wl-accent);color:var(--wl-accent-contrast)}
+html[data-warlike-app="warlike-library"][data-wl-theme] :is(.primary:hover,.feature-strip button:hover){filter:brightness(.94);color:var(--wl-accent-contrast)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .sidebar nav button{background:transparent;color:var(--wl-fg-muted)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .sidebar nav button.active{background:var(--wl-selected);color:var(--wl-fg)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .sidebar nav button:hover{background:var(--wl-surface-hover);color:var(--wl-fg)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .asset-card.selected{border-color:var(--wl-accent)}
+html[data-warlike-app="warlike-library"][data-wl-theme] :is(.kind-badge,.favorite){background:var(--wl-input);color:var(--wl-fg)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .favorite[aria-pressed=true]{color:var(--wl-accent)}
+html[data-warlike-app="warlike-library"][data-wl-theme] .collection-dot{color:var(--wl-olive-light)}
+html[data-warlike-app="warlike-library"][data-wl-theme] :is(a,button,input,select,textarea):focus-visible{outline:2px solid var(--wl-focus)}
+/* Retain Library's independent scrollable sidebar and its native responsive layouts. */
