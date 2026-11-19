@@ -1,8 +1,9 @@
 /* WarLike Clean v1 — unified visual decoration only.
+   The clean light palette is a fallback only: explicit Store themes must win.
    Canonical source: WarLike-Hub/design-system/warlike-clean.css
    Do not change layout, positioning, font-size, line-height, padding, or geometry.
    Canvas, editors, and media previews remain controlled by their own tools. */
-:root,html[data-warlike-app]{
+html[data-warlike-app]:not([data-wl-theme]){
  color-scheme:light;
  --wl-white:#FFFFFF;--wl-paper:#F9FAF6;--wl-ivory:#F1F2EA;
  --wl-olive:#D9D28B;--wl-sage:#6A795D;--wl-ink:#1C2B28;
@@ -19,25 +20,25 @@
  --muted:var(--wl-text-muted);--accent:var(--wl-accent);--primary:var(--wl-primary);
  --surface:var(--wl-surface);--soft:var(--wl-surface-alt);
 }
-html[data-warlike-app] body{background-color:var(--wl-bg);color:var(--wl-text)}
-html[data-warlike-app] :is(.sidebar,.side,.topbar,.mobileHeader,.panel,.card,.search,.sideNote,.notice,.toolbar,.modal,.dialog,.inspector,.asset-card,.feature-strip):not(canvas){
+html[data-warlike-app]:not([data-wl-theme]) body{background-color:var(--wl-bg);color:var(--wl-text)}
+html[data-warlike-app]:not([data-wl-theme]) :is(.sidebar,.side,.topbar,.mobileHeader,.panel,.card,.search,.sideNote,.notice,.toolbar,.modal,.dialog,.inspector,.asset-card,.feature-strip):not(canvas){
  background-color:var(--wl-surface);border-color:var(--wl-border);color:var(--wl-text);
 }
-html[data-warlike-app] :is(.sidebar,.side,.mobileHeader,.topbar){background-color:var(--wl-sidebar)}
-html[data-warlike-app] :is(.hero,.welcome,.feature-strip){background-image:linear-gradient(115deg,var(--wl-ivory),var(--wl-surface));border-color:var(--wl-border);color:var(--wl-text)}
-html[data-warlike-app] :is(h1,h2,h3,h4,.brand,.card-name,.brand-title){color:var(--wl-ink)}
-html[data-warlike-app] :is(p,small,.muted,.hint,.subtitle,.nav-label,.eyebrow,.card-info){color:var(--wl-text-muted)}
-html[data-warlike-app] :is(input:not([type=color]):not([type=range]):not([type=checkbox]):not([type=radio]),select,textarea){
+html[data-warlike-app]:not([data-wl-theme]) :is(.sidebar,.side,.mobileHeader,.topbar){background-color:var(--wl-sidebar)}
+html[data-warlike-app]:not([data-wl-theme]) :is(.hero,.welcome,.feature-strip){background-image:linear-gradient(115deg,var(--wl-ivory),var(--wl-surface));border-color:var(--wl-border);color:var(--wl-text)}
+html[data-warlike-app]:not([data-wl-theme]) :is(h1,h2,h3,h4,.brand,.card-name,.brand-title){color:var(--wl-ink)}
+html[data-warlike-app]:not([data-wl-theme]) :is(p,small,.muted,.hint,.subtitle,.nav-label,.eyebrow,.card-info){color:var(--wl-text-muted)}
+html[data-warlike-app]:not([data-wl-theme]) :is(input:not([type=color]):not([type=range]):not([type=checkbox]):not([type=radio]),select,textarea){
  background-color:var(--wl-input);border-color:var(--wl-border);color:var(--wl-text);
 }
-html[data-warlike-app] :is(input,textarea)::placeholder{color:var(--wl-text-muted);opacity:1}
-html[data-warlike-app] :is(button,.btn,.secondary,.button.secondary):not(.primary):not(.btn-primary){
+html[data-warlike-app]:not([data-wl-theme]) :is(input,textarea)::placeholder{color:var(--wl-text-muted);opacity:1}
+html[data-warlike-app]:not([data-wl-theme]) :is(button,.btn,.secondary,.button.secondary):not(.primary):not(.btn-primary){
  background-color:var(--wl-surface-alt);border-color:var(--wl-border);color:var(--wl-text);
 }
-html[data-warlike-app] :is(.primary,.btn-primary,.button.primary,.cta){
+html[data-warlike-app]:not([data-wl-theme]) :is(.primary,.btn-primary,.button.primary,.cta){
  background-color:var(--wl-primary);border-color:var(--wl-primary);color:var(--wl-primary-text);
 }
-html[data-warlike-app] :is(button,a,input,select,textarea):focus-visible{outline-color:var(--wl-focus)}
-html[data-warlike-app] :is(.card,.panel,.sidebar,.side,.inspector){box-shadow:var(--wl-shadow)}
+html[data-warlike-app]:not([data-wl-theme]) :is(button,a,input,select,textarea):focus-visible{outline-color:var(--wl-focus)}
+html[data-warlike-app]:not([data-wl-theme]) :is(.card,.panel,.sidebar,.side,.inspector){box-shadow:var(--wl-shadow)}
 /* Decoration-only: no display, position, width, height, margin, padding,
    transform, grid, flex, overflow, font sizes or canvas rendering overrides. */
