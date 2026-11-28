@@ -16,3 +16,34 @@ html[data-warlike-app="warlike-library"] .asset-visual img{max-width:100%;object
  html[data-warlike-app="warlike-library"] .sidebar.expanded #collections{max-height:48vh;overflow-y:auto;overflow-x:hidden}
  html[data-warlike-app="warlike-library"] .workspace{margin-left:0}
 }
+
+/* Resource-first layout; preserve shared palette and existing resource actions. */
+html[data-warlike-app="warlike-library"] .workspace>main{padding:18px clamp(12px,1.5vw,24px)}
+html[data-warlike-app="warlike-library"] .page-heading h1{font-size:clamp(20px,2vw,28px);letter-spacing:-.6px}
+html[data-warlike-app="warlike-library"] .page-heading .eyebrow{margin-bottom:5px}
+html[data-warlike-app="warlike-library"] .subtitle{margin:5px 0 12px}
+html[data-warlike-app="warlike-library"] .feature-strip{padding:12px 15px;margin-bottom:15px;gap:12px}
+html[data-warlike-app="warlike-library"] .feature-strip h2{font-size:15px;margin:3px 0}
+html[data-warlike-app="warlike-library"] .feature-icon{font-size:18px;padding:8px}
+html[data-warlike-app="warlike-library"] .feature-code{display:none}
+html[data-warlike-app="warlike-library"] .chips{padding:10px 0;gap:5px}
+html[data-warlike-app="warlike-library"] .asset-layout{gap:12px;min-width:0}
+html[data-warlike-app="warlike-library"] .asset-grid:not(.list){grid-template-columns:repeat(auto-fill,minmax(min(100%,155px),1fr));gap:10px}
+html[data-warlike-app="warlike-library"] .asset-grid:not(.list) .asset-visual{height:auto;aspect-ratio:4/3;min-height:0}
+html[data-warlike-app="warlike-library"] .asset-grid:not(.list) .asset-visual>button.open-card{position:absolute;inset:0;min-width:0;min-height:0}
+html[data-warlike-app="warlike-library"] .asset-grid:not(.list) .asset-visual img{width:auto;height:auto;max-height:100%;max-width:100%;object-fit:contain}
+html[data-warlike-app="warlike-library"] .asset-grid:not(.list) .asset-visual img.pixel{width:94px;height:94px;max-width:100%;max-height:100%}
+html[data-warlike-app="warlike-library"] .asset-card:hover{transform:none}
+html[data-warlike-app="warlike-library"] .asset-card .card-name{font-size:12px;padding:9px 10px 3px}
+html[data-warlike-app="warlike-library"] .card-info{font-size:10px;padding:4px 10px 9px;gap:5px;flex-wrap:wrap}
+html[data-warlike-app="warlike-library"] .inspector{min-width:0;overflow-wrap:anywhere}
+html[data-warlike-app="warlike-library"] .inspector .actions>*{min-width:0;white-space:normal}
+@media(min-width:851px){
+html[data-warlike-app="warlike-library"] .workspace{height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+html[data-warlike-app="warlike-library"] .topbar{height:auto;min-height:56px;flex:0 0 auto;flex-wrap:wrap;gap:6px;padding:8px 14px}
+html[data-warlike-app="warlike-library"] .topbar .search{min-width:150px;max-width:360px}
+html[data-warlike-app="warlike-library"] .topbar .breadcrumb{display:none}
+html[data-warlike-app="warlike-library"] .workspace>main{flex:1;min-height:0;width:100%;overflow:auto;overscroll-behavior:contain}
+html[data-warlike-app="warlike-library"] .inspector{top:0;max-height:calc(100dvh - 120px);overflow:auto;overscroll-behavior:contain}
+}
+@media(max-width:600px){html[data-warlike-app="warlike-library"] .asset-grid:not(.list){grid-template-columns:repeat(2,minmax(0,1fr))}html[data-warlike-app="warlike-library"] .feature-strip{flex-wrap:wrap}html[data-warlike-app="warlike-library"] .feature-strip button{margin-left:0}}
