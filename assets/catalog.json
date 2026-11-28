@@ -703,7 +703,8 @@
     "url": "./assets/community/warlike-pine-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T18:00:00Z"
+    "addedAt": "2026-11-07T18:00:00Z",
+    "thumbnail": "./assets/community/warlike-pine-3d.png"
   },
   {
     "id": "builtin-community-warlike-watchtower-3d",
@@ -721,7 +722,8 @@
     "url": "./assets/community/warlike-watchtower-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T18:00:00Z"
+    "addedAt": "2026-11-07T18:00:00Z",
+    "thumbnail": "./assets/community/warlike-watchtower-3d.png"
   },
   {
     "id": "builtin-community-warlike-lamp-3d",
@@ -739,7 +741,8 @@
     "url": "./assets/community/warlike-lamp-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T18:00:00Z"
+    "addedAt": "2026-11-07T18:00:00Z",
+    "thumbnail": "./assets/community/warlike-lamp-3d.png"
   },
   {
     "id": "builtin-community-warlike-scifi-beacon-3d",
@@ -757,7 +760,8 @@
     "url": "./assets/community/warlike-scifi-beacon-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T18:00:00Z"
+    "addedAt": "2026-11-07T18:00:00Z",
+    "thumbnail": "./assets/community/warlike-scifi-beacon-3d.png"
   },
   {
     "id": "builtin-community-warlike-medieval-well-3d",
@@ -775,7 +779,8 @@
     "url": "./assets/community/warlike-medieval-well-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T18:00:00Z"
+    "addedAt": "2026-11-07T18:00:00Z",
+    "thumbnail": "./assets/community/warlike-medieval-well-3d.png"
   },
   {
     "id": "builtin-community-warlike-barrel",
@@ -973,7 +978,8 @@
     "url": "./assets/community/warlike-crate-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T18:30:00Z"
+    "addedAt": "2026-11-07T18:30:00Z",
+    "thumbnail": "./assets/community/warlike-crate-3d.png"
   },
   {
     "id": "builtin-community-warlike-bench-3d",
@@ -991,7 +997,8 @@
     "url": "./assets/community/warlike-bench-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T18:30:00Z"
+    "addedAt": "2026-11-07T18:30:00Z",
+    "thumbnail": "./assets/community/warlike-bench-3d.png"
   },
   {
     "id": "builtin-community-warlike-shelter-3d",
@@ -1009,7 +1016,8 @@
     "url": "./assets/community/warlike-shelter-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T18:30:00Z"
+    "addedAt": "2026-11-07T18:30:00Z",
+    "thumbnail": "./assets/community/warlike-shelter-3d.png"
   },
   {
     "id": "builtin-community-warlike-server-rack-3d",
@@ -1027,7 +1035,8 @@
     "url": "./assets/community/warlike-server-rack-3d.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T18:30:00Z"
+    "addedAt": "2026-11-07T18:30:00Z",
+    "thumbnail": "./assets/community/warlike-server-rack-3d.png"
   },
   {
     "id": "builtin-community-rpg-mage",
@@ -1261,7 +1270,8 @@
     "url": "./assets/community/fps-supply-crate.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T19:00:00Z"
+    "addedAt": "2026-11-07T19:00:00Z",
+    "thumbnail": "./assets/community/fps-supply-crate.png"
   },
   {
     "id": "builtin-community-rts-radar-tower",
@@ -1279,7 +1289,8 @@
     "url": "./assets/community/rts-radar-tower.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T19:00:00Z"
+    "addedAt": "2026-11-07T19:00:00Z",
+    "thumbnail": "./assets/community/rts-radar-tower.png"
   },
   {
     "id": "builtin-community-sim-market-stall",
@@ -1297,7 +1308,8 @@
     "url": "./assets/community/sim-market-stall.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T19:00:00Z"
+    "addedAt": "2026-11-07T19:00:00Z",
+    "thumbnail": "./assets/community/sim-market-stall.png"
   },
   {
     "id": "builtin-community-horror-stone-altar",
@@ -1315,7 +1327,8 @@
     "url": "./assets/community/horror-stone-altar.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T19:00:00Z"
+    "addedAt": "2026-11-07T19:00:00Z",
+    "thumbnail": "./assets/community/horror-stone-altar.png"
   },
   {
     "id": "builtin-community-rpg-treasure-chest",
@@ -1333,7 +1346,8 @@
     "url": "./assets/community/rpg-treasure-chest.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T19:00:00Z"
+    "addedAt": "2026-11-07T19:00:00Z",
+    "thumbnail": "./assets/community/rpg-treasure-chest.png"
   },
   {
     "id": "builtin-community-sport-goal",
@@ -1351,7 +1365,8 @@
     "url": "./assets/community/sport-goal.gltf",
     "author": "WarLike",
     "license": "MIT",
-    "addedAt": "2026-11-07T19:00:00Z"
+    "addedAt": "2026-11-07T19:00:00Z",
+    "thumbnail": "./assets/community/sport-goal.png"
   },
   {
     "id": "builtin-community-modern-tactical-4x4",
@@ -1374,7 +1389,8 @@
     "license": "MIT",
     "animations": [],
     "addedAt": "2026-11-07T20:00:00Z",
-    "triangles": 984
+    "triangles": 984,
+    "thumbnail": "./assets/community/modern-tactical-4x4.png"
   },
   {
     "id": "builtin-community-modern-checkpoint",
@@ -1397,7 +1413,8 @@
     "license": "MIT",
     "animations": [],
     "addedAt": "2026-11-07T20:00:00Z",
-    "triangles": 464
+    "triangles": 464,
+    "thumbnail": "./assets/community/modern-checkpoint.png"
   },
   {
     "id": "builtin-community-vehicle-scout-buggy",
@@ -1419,7 +1436,8 @@
     "license": "MIT",
     "animations": [],
     "triangles": 704,
-    "addedAt": "2026-11-07T21:00:00Z"
+    "addedAt": "2026-11-07T21:00:00Z",
+    "thumbnail": "./assets/community/vehicle-scout-buggy.png"
   },
   {
     "id": "builtin-community-vehicle-armored-carrier",
@@ -1441,7 +1459,8 @@
     "license": "MIT",
     "animations": [],
     "triangles": 1232,
-    "addedAt": "2026-11-07T21:00:00Z"
+    "addedAt": "2026-11-07T21:00:00Z",
+    "thumbnail": "./assets/community/vehicle-armored-carrier.png"
   },
   {
     "id": "builtin-community-character-scout",
@@ -1463,7 +1482,8 @@
     "license": "MIT",
     "animations": [],
     "triangles": 1048,
-    "addedAt": "2026-11-07T21:00:00Z"
+    "addedAt": "2026-11-07T21:00:00Z",
+    "thumbnail": "./assets/community/character-scout.png"
   },
   {
     "id": "builtin-community-character-field-medic",
@@ -1485,7 +1505,8 @@
     "license": "MIT",
     "animations": [],
     "triangles": 1048,
-    "addedAt": "2026-11-07T21:00:00Z"
+    "addedAt": "2026-11-07T21:00:00Z",
+    "thumbnail": "./assets/community/character-field-medic.png"
   },
   {
     "id": "builtin-kenney-police-car-glb",
